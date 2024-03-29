@@ -109,7 +109,10 @@ npm run dev
 Open `http://localhost:8000` in your browser to access Math Rizz. When you want to access __Tuhfah__ in a web browser, make sure you **do not close or stop both of those processes**.
 
 ## Reference
-[Effendi, M. Iqbal dan Nafila Fayruz. 2021. Sistem Informasi dan Manajemen Taman Pendidikan Alquran Imam Syafi'i Banjarmasin Berbasis Web dan Aplikasi Android. _Tugas Akhir Diploma 3_. Banjarmasin: Politeknik Negeri Banjarmasin.](https://drive.google.com/file/d/1IcnC0AzTEy1HQBOAmqEvJy7vNhtv4uMu/view?usp=sharing)
+
+- [Effendi, M. Iqbal dan Nafila Fayruz. 2021. Sistem Informasi dan Manajemen Taman Pendidikan Al-Qur'an Imam Syafi'i Banjarmasin Berbasis Web dan Aplikasi Android. _Tugas Akhir Diploma 3_. Banjarmasin: Politeknik Negeri Banjarmasin.](https://drive.google.com/file/d/1IcnC0AzTEy1HQBOAmqEvJy7vNhtv4uMu/view?usp=sharing)
+
+- [Fitri dkk. (2022). Sistem Informasi dan Manajemen Taman Pendidikan Al-Qur'an Imam Syafi'i Banjarmasin Berbasis Web. _Jurnal Impact_, 4(1), 4-11.](https://ejurnal.poliban.ac.id/index.php/impact/article/view/1252/965)
 
 ## License
 
