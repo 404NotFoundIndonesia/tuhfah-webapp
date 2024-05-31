@@ -29,4 +29,13 @@ return [
     'cancel' => 'Cancel',
     'new' => 'New',
     'detail' => 'Detail',
+    'owner' => 'Owner',
+    'headmaster' => 'Headmaster',
+    'administrator' => 'Administrator',
+    'teacher' => 'Teacher',
+    'student_guardian' => 'Student Guardian',
+    'single' => 'Single',
+    'married' => 'Married',
+    'divorced' => 'Divorced',
+    'widowed' => 'Widowed',
 ];

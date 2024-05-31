@@ -23,6 +23,12 @@ class User extends Authenticatable
         'email',
         'password',
         'locale',
+        'role',
+        'image',
+        'phone',
+        'address',
+        'marital_status',
+        'gender',
     ];
 
     /**
@@ -36,7 +42,7 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'avatar_url',
+        'image_url',
     ];
 
     /**
@@ -52,7 +58,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function avatarUrl(): Attribute
+    public function imageUrl(): Attribute
     {
         return new Attribute(
             get: fn () => 'https://ui-avatars.com/api/?name='.$this->name,

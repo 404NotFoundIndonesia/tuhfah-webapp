@@ -29,4 +29,13 @@ return [
     'cancel' => 'Batalkan',
     'new' => 'Baru',
     'detail' => 'Detail',
+    'owner' => 'Pemilik',
+    'headmaster' => 'Kepala TPQ/TPA',
+    'administrator' => 'Admin',
+    'teacher' => 'Pengajar',
+    'student_guardian' => 'Wali Santri',
+    'single' => 'Belum Kawin',
+    'married' => 'Kawin',
+    'divorced' => 'Cerai Hidup',
+    'widowed' => 'Cerai Mati',
 ];
