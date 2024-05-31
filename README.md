@@ -54,8 +54,7 @@ __Tuhfah__ is designed to be user-friendly, intuitive, and accessible across dev
 
 - __Backend__: PHP 8.3, Laravel 11.0
 - __Database__: MySQL Community Server
-- __Frontend__: HTML, CSS, JavaScript, Svelte 4.12
-- __Notification__: Firebase Cloud Messaging
+- __Frontend__: HTML, CSS, JavaScript
 
 ## Get Started
 
@@ -75,38 +74,25 @@ Of course, you need to put this code on your computer first. There are two ways 
 
 ### Install Dependencies
 
-There are two types of dependencies that we need to install for this project: one for the backend and one for the frontend. For the backend, we use Composer for dependency management, while for the frontend, we use npm to install dependencies.
-
-And __make sure this project is open in your command line interface__. To confirm your current active directory in the terminal, use the following command: 
+__Make sure this project is open in your command line interface__. To confirm your current active directory in the terminal, use the following command: 
 ```shell
 pwd
 ```
 
 To install backend dependencies, use the following command:
 ```shell
-composer install
+composer setup
 ```
 
-To install frontend dependencies, use the following command:
-```shell
-npm install
-```
 
 ### How to Run
-
-You need to open two command line instances to run this project. Each is used for the backend and frontend parts. Also, make sure the active directory in each command line is within this project.
 
 To run the backend server, use the following command:
 ```shell
 php artisan serve
 ```
 
-To run the frontend server, use the following command:
-```shell
-npm run dev
-```
-
-Open `http://localhost:8000` in your browser to access Math Rizz. When you want to access __Tuhfah__ in a web browser, make sure you **do not close or stop both of those processes**.
+Open `http://localhost:8000` in your browser to access Tuhfah Webapp. When you want to access __Tuhfah__ in a web browser, make sure you **do not close or stop both of those processes**.
 
 ## Reference
 
