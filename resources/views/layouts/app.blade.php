@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html
-  lang="id"
+  lang="{{ auth()->user()?->locale ?? 'id' }}"
   class="light-style layout-menu-fixed layout-compact"
   dir="ltr"
   data-theme="theme-default"
