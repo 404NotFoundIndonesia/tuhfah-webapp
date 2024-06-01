@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
+use App\Enum\Role;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -63,5 +63,15 @@ class User extends Authenticatable
         return new Attribute(
             get: fn () => 'https://ui-avatars.com/api/?name='.$this->name,
         );
+    }
+
+    public function isRole(Role $role): bool
+    {
+        return Role::tryFrom($this->role) === $role;
+    }
+
+    public function scopeRole(Builder $query, Role $role)
+    {
+        return $query->where('role', $role);
     }
 }

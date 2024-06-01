@@ -16,4 +16,5 @@ return [
     'profile' => 'Profil',
     'change_password' => 'Ganti Password',
     'locale' => 'Bahasa',
+    'teacher' => 'Pengajar',
 ];
