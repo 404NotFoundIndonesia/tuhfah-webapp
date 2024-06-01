@@ -15,13 +15,15 @@
 
     <ul class="menu-inner py-1">
         @foreach ($menuData->menu as $menu)
-            @if (isset($menu->menuHeader))
+            @if (isset($menu->menuHeader) && in_array(auth()->user()->role, $menu->role))
                 <li class="menu-header small text-uppercase">
                     <span class="menu-header-text">{{ __($menu->menuHeader) }}</span>
                 </li>
-            @else
+            @elseif (in_array(auth()->user()->role, $menu->role))
                 <li class="menu-item {{ Route::is($menu->slug) ? 'active open' : '' }}">
-                    <a href="{{ isset($menu->url) ? route($menu->url) : 'javascript:void(0);' }}" class="{{ isset($menu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}" @if (isset($menu->target) and !empty($menu->target)) target="_blank" @endif>
+                    <a href="{{ isset($menu->url) ? route($menu->url) : 'javascript:void(0);' }}"
+                       class="{{ isset($menu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}"
+                       @if (isset($menu->target) and !empty($menu->target)) target="_blank" @endif>
                         @isset($menu->icon)
                             <i class="{{ $menu->icon }}"></i>
                         @endisset
@@ -35,17 +37,21 @@
                     @isset($menu->submenu)
                         <ul class="menu-sub">
                             @foreach ($menu->submenu as $submenu)
-                                <li class="menu-item {{ Route::is($submenu->slug) ? 'active open' : '' }}">
-                                    <a href="{{ isset($submenu->url) ? route($submenu->url) : 'javascript:void(0)' }}" class="{{ isset($submenu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}" @if (isset($submenu->target) and !empty($submenu->target)) target="_blank" @endif>
-                                        @if (isset($submenu->icon))
-                                        <i class="{{ $submenu->icon }}"></i>
-                                        @endif
-                                        <div>{{ isset($submenu->name) ? __($submenu->name) : '' }}</div>
-                                        @isset($submenu->badge)
-                                        <div class="badge bg-{{ $submenu->badge[0] }} rounded-pill ms-auto">{{ $submenu->badge[1] }}</div>
-                                        @endisset
-                                    </a>
-                                </li>
+                                @if (in_array(auth()->user()->role, $submenu->role))
+                                    <li class="menu-item {{ Route::is($submenu->slug) ? 'active open' : '' }}">
+                                        <a href="{{ isset($submenu->url) ? route($submenu->url) : 'javascript:void(0)' }}"
+                                           class="{{ isset($submenu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}"
+                                           @if (isset($submenu->target) and !empty($submenu->target)) target="_blank" @endif>
+                                            @if (isset($submenu->icon))
+                                                <i class="{{ $submenu->icon }}"></i>
+                                            @endif
+                                            <div>{{ isset($submenu->name) ? __($submenu->name) : '' }}</div>
+                                            @isset($submenu->badge)
+                                                <div class="badge bg-{{ $submenu->badge[0] }} rounded-pill ms-auto">{{ $submenu->badge[1] }}</div>
+                                            @endisset
+                                        </a>
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
                     @endisset
