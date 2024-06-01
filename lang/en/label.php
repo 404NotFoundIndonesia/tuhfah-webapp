@@ -38,4 +38,7 @@ return [
     'married' => 'Married',
     'divorced' => 'Divorced',
     'widowed' => 'Widowed',
+    'male' => 'Male',
+    'female' => 'Female',
+    'required' => 'Required',
 ];

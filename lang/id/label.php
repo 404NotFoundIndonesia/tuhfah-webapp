@@ -38,4 +38,7 @@ return [
     'married' => 'Kawin',
     'divorced' => 'Cerai Hidup',
     'widowed' => 'Cerai Mati',
+    'male' => 'Laki-laki',
+    'female' => 'Perempuan',
+    'required' => 'Wajib',
 ];
