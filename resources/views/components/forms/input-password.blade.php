@@ -1,5 +1,5 @@
 <div class="form-password-toggle">
-    <label class="form-label" for="{{ $attributes['name'] }}">{{ __('field.' . $attributes['name']) }}</label>
+    <label class="form-label" for="{{ $attributes['name'] }}">{{ __('field.' . $attributes['name']) }} @isset($attributes['required'])<abbr title="{{ __('label.required') }}" class="initialism text-danger">*</abbr>@endisset</label>
     <div class="input-group input-group-merge">
         <input
             type="password"

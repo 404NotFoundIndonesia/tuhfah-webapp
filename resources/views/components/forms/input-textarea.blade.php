@@ -1,5 +1,5 @@
 <div>
-    <label for="{{ $attributes['name'] }}" class="form-label">{{ __('field.' . $attributes['name']) }}</label>
+    <label for="{{ $attributes['name'] }}" class="form-label">{{ __('field.' . $attributes['name']) }} @isset($attributes['required'])<abbr title="{{ __('label.required') }}" class="initialism text-danger">*</abbr>@endisset</label>
     <textarea
         class="form-control @error($attributes['name']) is-invalid @enderror"
         id="{{ $attributes['name'] }}"

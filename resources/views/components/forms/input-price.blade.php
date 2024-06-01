@@ -1,5 +1,5 @@
 <div>
-    <label for="{{ $attributes['name'] }}" class="form-label">{{ __('field.' . $attributes['name']) }}</label>
+    <label for="{{ $attributes['name'] }}" class="form-label">{{ __('field.' . $attributes['name']) }} @isset($attributes['required'])<abbr title="{{ __('label.required') }}" class="initialism text-danger">*</abbr>@endisset</label>
     <div class="input-group input-group-merge @error($attributes['name']) is-invalid @enderror">
         <span class="input-group-text">Rp</span>
         <input

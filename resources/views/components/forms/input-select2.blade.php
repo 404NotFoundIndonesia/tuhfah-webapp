@@ -1,5 +1,5 @@
 <div>
-    <label for="{{ $attributes['name'] }}" class="form-label">{{ __('field.' . $attributes['name']) }}</label>
+    <label for="{{ $attributes['name'] }}" class="form-label">{{ __('field.' . $attributes['name']) }} @isset($attributes['required'])<abbr title="{{ __('label.required') }}" class="initialism text-danger">*</abbr>@endisset</label>
     <select
         {{ $attributes['multiple'] ? 'multiple' : '' }}
         id="{{ $attributes['name'] }}"
