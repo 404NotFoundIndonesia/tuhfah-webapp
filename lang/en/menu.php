@@ -17,4 +17,6 @@ return [
     'change_password' => 'Change Password',
     'locale' => 'Language',
     'teacher' => 'Teacher',
+    'user_management' => 'User Management',
+    'setting' => 'Setting',
 ];

@@ -17,4 +17,6 @@ return [
     'change_password' => 'Ganti Password',
     'locale' => 'Bahasa',
     'teacher' => 'Pengajar',
+    'user_management' => 'Pengelolaan Pengguna',
+    'setting' => 'Pengaturan',
 ];

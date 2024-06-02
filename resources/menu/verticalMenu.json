@@ -8,8 +8,17 @@
             "role": [
                 "owner",
                 "headmaster",
-                "admin",
+                "administrator",
+                "teacher",
                 "student_guardian"
+            ]
+        },
+        {
+            "menuHeader": "menu.user_management",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator"
             ]
         },
         {
@@ -20,7 +29,16 @@
             "role": [
                 "owner",
                 "headmaster",
-                "admin",
+                "administrator"
+            ]
+        },
+        {
+            "menuHeader": "menu.setting",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator",
+                "teacher",
                 "student_guardian"
             ]
         },
@@ -31,7 +49,8 @@
             "role": [
                 "owner",
                 "headmaster",
-                "admin",
+                "administrator",
+                "teacher",
                 "student_guardian"
             ],
             "submenu": [
@@ -42,7 +61,8 @@
                     "role": [
                         "owner",
                         "headmaster",
-                        "admin",
+                        "administrator",
+                        "teacher",
                         "student_guardian"
                     ]
                 },
@@ -53,7 +73,8 @@
                     "role": [
                         "owner",
                         "headmaster",
-                        "admin",
+                        "administrator",
+                        "teacher",
                         "student_guardian"
                     ]
                 }
