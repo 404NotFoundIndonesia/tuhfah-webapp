@@ -19,4 +19,5 @@ return [
     'teacher' => 'Teacher',
     'user_management' => 'User Management',
     'setting' => 'Setting',
+    'administrator' => 'Administrator',
 ];

@@ -17,6 +17,7 @@ Route::middleware(['locale'])->group(function () {
 
         });
 
+        Route::resource('administrator', \App\Http\Controllers\AdministratorController::class);
         Route::resource('teacher', \App\Http\Controllers\TeacherController::class);
 
         Route::as('account.')->group(function () {

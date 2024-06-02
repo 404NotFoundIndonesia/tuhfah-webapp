@@ -17,6 +17,10 @@ class UserSeeder extends Seeder
             'role' => Role::HEADMASTER,
         ]);
 
+        User::factory()->create([
+            'role' => Role::ADMINISTRATOR,
+        ]);
+
         User::factory(10)->create([
             'role' => Role::TEACHER,
         ]);

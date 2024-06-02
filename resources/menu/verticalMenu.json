@@ -22,6 +22,16 @@
             ]
         },
         {
+            "url": "administrator.index",
+            "name": "menu.administrator",
+            "icon": "menu-icon tf-icons bx bx-user-check",
+            "slug": "administrator.*",
+            "role": [
+                "owner",
+                "headmaster"
+            ]
+        },
+        {
             "url": "teacher.index",
             "name": "menu.teacher",
             "icon": "menu-icon tf-icons bx bx-user-voice",

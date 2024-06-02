@@ -19,4 +19,5 @@ return [
     'teacher' => 'Pengajar',
     'user_management' => 'Pengelolaan Pengguna',
     'setting' => 'Pengaturan',
+    'administrator' => 'Admin',
 ];
