@@ -51,7 +51,7 @@
                 {data: 'phone', name: 'phone'},
                 {data: 'action', orderable: false, searchable: false},
             ],
-            order: [[1, "desc"]],
+            order: [[1, "asc"]],
             dom: '<"row px-4 my-3"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>>t<"row px-4 my-3"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6 d-flex justify-content-end"p>>',
             language: {
                 url: `/assets/vendor/libs/datatables/language/${locale}.json`

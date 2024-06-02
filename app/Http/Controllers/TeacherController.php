@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
-use Yajra\DataTables\DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class TeacherController extends Controller
 {
@@ -22,7 +22,7 @@ class TeacherController extends Controller
     public function index(Request $request): View|JsonResponse
     {
         if ($request->ajax()) {
-            return DataTables::of(User::role(Role::TEACHER))
+            return DataTables::eloquent(User::role(Role::TEACHER))
                 ->addColumn('action', function ($row) {
                     return '<div class="dropdown">
                                 <button type="button"
@@ -42,8 +42,9 @@ class TeacherController extends Controller
                 })
                 ->editColumn('image', fn ($row) => '<a data-fslightbox href="'.$row->image_url.'"><img src="'.$row->image_url.'" alt="user-avatar" class="d-block rounded" height="30" width="30"></a>')
                 ->editColumn('gender', fn ($row) => __('label.'.$row->gender))
+                ->filterColumn('gender', fn ($query, $keyword) => $query->where('gender', $keyword))
                 ->rawColumns(['action', 'image'])
-                ->make();
+                ->toJson();
         }
 
         return view('pages.teacher.index');
