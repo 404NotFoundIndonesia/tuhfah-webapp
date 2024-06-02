@@ -47,6 +47,7 @@
 @push('script')
     <script src="{{ asset('assets/vendor/libs/select2/select2.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/fslightbox/fslightbox.js') }}"></script>
     <script>
         $('.select2').select2({theme: 'bootstrap-5'});
 

@@ -41,4 +41,5 @@ return [
     'male' => 'Laki-laki',
     'female' => 'Perempuan',
     'required' => 'Wajib',
+    'allowed_image_upload' => 'Hanya boleh JPG atau PNG. Ukuran maksimal 2MB',
 ];

@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Yajra\DataTables\DataTables;
 
@@ -39,8 +40,9 @@ class TeacherController extends Controller
                                 </div>
                             </div>';
                 })
+                ->editColumn('image', fn ($row) => '<a data-fslightbox href="'.$row->image_url.'"><img src="'.$row->image_url.'" alt="user-avatar" class="d-block rounded" height="30" width="30"></a>')
                 ->editColumn('gender', fn ($row) => __('label.'.$row->gender))
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'image'])
                 ->make();
         }
 
@@ -64,6 +66,11 @@ class TeacherController extends Controller
             $data = $request->validated();
             $data['role'] = Role::TEACHER;
             $data['password'] = bcrypt('password');
+
+            if ($request->hasFile('image')) {
+                $data['image'] = time().random_int(0, PHP_INT_MAX).'.'.$request->file('image')->extension();
+                Storage::putFileAs('public', $request->file('image'), $data['image']);
+            }
 
             User::create($data);
 
@@ -101,7 +108,18 @@ class TeacherController extends Controller
     public function update(UpdateTeacherRequest $request, User $teacher): RedirectResponse
     {
         try {
-            $teacher->update($request->validated());
+            $data = $request->validated();
+
+            if ($request->hasFile('image')) {
+                if ($teacher->image) {
+                    Storage::delete("public/{$teacher->image}");
+                }
+
+                $data['image'] = time().random_int(0, PHP_INT_MAX).'.'.$request->file('image')->extension();
+                Storage::putFileAs('public', $request->file('image'), $data['image']);
+            }
+
+            $teacher->update($data);
 
             return back()->with('notification', $this->successNotification('notification.success_update', 'menu.teacher'));
         } catch (\Throwable $throwable) {

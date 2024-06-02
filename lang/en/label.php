@@ -41,4 +41,5 @@ return [
     'male' => 'Male',
     'female' => 'Female',
     'required' => 'Required',
+    'allowed_image_upload' => 'Allowed JPG or PNG. Max size of 2MB',
 ];

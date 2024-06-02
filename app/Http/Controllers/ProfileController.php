@@ -7,7 +7,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Random\RandomException;
 
 class ProfileController extends Controller
 {
@@ -23,10 +25,27 @@ class ProfileController extends Controller
 
     /**
      * Update the user's profile information.
+     *
+     * @throws RandomException
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $data = $request->validated();
+
+        if (isset($data['image']) || $data['image'] === null) {
+            unset($data['image']);
+        }
+
+        if ($request->hasFile('image')) {
+            if ($request->user()->image) {
+                Storage::delete("public/{$request->user()->image}");
+            }
+
+            $data['image'] = time().random_int(0, PHP_INT_MAX).'.'.$request->file('image')->extension();
+            Storage::putFileAs('public', $request->file('image'), $data['image']);
+        }
+
+        $request->user()->fill($data);
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;

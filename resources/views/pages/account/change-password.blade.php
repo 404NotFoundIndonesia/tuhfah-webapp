@@ -26,17 +26,19 @@
                     @method('put')
                     <div class="card-body">
                         <div class="row">
-                            <div class="mb-3 col-md-12">
+                            <div class="mb-3 col-md-6">
                                 <x-forms.input-password name="current_password"/>
                             </div>
-                            <div class="mb-3 col-md-12">
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
                                 <x-forms.input-password name="password"/>
                             </div>
-                            <div class="mb-3 col-md-12">
+                            <div class="mb-3 col-md-6">
                                 <x-forms.input-password name="password_confirmation"/>
                             </div>
                         </div>
-                        <div class="mt-2">
+                        <div class="mt-4">
                             <button type="submit" class="btn btn-primary me-2">{{ __('button.submit') }}</button>
                             <button type="reset" class="btn btn-outline-secondary">{{ __('button.reset') }}</button>
                         </div>
