@@ -43,6 +43,17 @@
             ]
         },
         {
+            "url": "student-guardian.index",
+            "name": "menu.student_guardian",
+            "icon": "menu-icon tf-icons bx bx-group",
+            "slug": "student-guardian.*",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator"
+            ]
+        },
+        {
             "menuHeader": "menu.setting",
             "role": [
                 "owner",

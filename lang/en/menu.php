@@ -20,4 +20,5 @@ return [
     'user_management' => 'User Management',
     'setting' => 'Setting',
     'administrator' => 'Administrator',
+    'student_guardian' => 'Student Guardian',
 ];
