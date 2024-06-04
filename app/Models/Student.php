@@ -41,8 +41,8 @@ class Student extends Model
             if (is_null($student->student_id_number)) {
                 $studentIdNumber = $student->gender === 'male' ? 'I' : 'A';
                 $studentIdNumber .= now()->toHijri()->isoFormat('YYMM');
-                $number = Student::where('student_id_number', 'LIKE', $studentIdNumber . '%')->count() + 1;
-                $student->student_id_number = $studentIdNumber . str_pad($number, 3, '0',STR_PAD_LEFT);
+                $number = Student::where('student_id_number', 'LIKE', $studentIdNumber.'%')->count() + 1;
+                $student->student_id_number = $studentIdNumber.str_pad($number, 3, '0', STR_PAD_LEFT);
             }
         });
         static::deleting(function (Student $student) {
