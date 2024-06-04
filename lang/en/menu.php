@@ -21,4 +21,6 @@ return [
     'setting' => 'Setting',
     'administrator' => 'Administrator',
     'student_guardian' => 'Student Guardian',
+    'student' => 'Student',
+    'academic' => 'Academic',
 ];

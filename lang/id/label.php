@@ -42,4 +42,10 @@ return [
     'female' => 'Perempuan',
     'required' => 'Wajib',
     'allowed_image_upload' => 'Hanya boleh JPG atau PNG. Ukuran maksimal 2MB',
+    'candidate' => 'Calon Santri',
+    'active' => 'Aktif',
+    'graduated' => 'Lulus',
+    'expelled' => 'Dikeluarkan',
+    'quit' => 'Berhenti',
+    'on_leave' => 'Cuti',
 ];

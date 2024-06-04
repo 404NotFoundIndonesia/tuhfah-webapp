@@ -23,4 +23,12 @@ return [
     'address' => 'Address',
     'marital_status' => 'Marital Status',
     'gender' => 'Gender',
+    'student_id_number' => 'Student ID Number',
+    'nickname' => 'Nickname',
+    'birthplace' => 'Birthplace',
+    'birthdate' => 'Birthdate',
+    'status' => 'Status',
+    'admission_date' => 'Admission Date',
+    'departure_date' => 'Departure Date',
+    'student_guardian_id' => 'Student Guardian',
 ];

@@ -42,4 +42,10 @@ return [
     'female' => 'Female',
     'required' => 'Required',
     'allowed_image_upload' => 'Allowed JPG or PNG. Max size of 2MB',
+    'candidate' => 'Candidate',
+    'active' => 'Active',
+    'graduated' => 'Graduated',
+    'expelled' => 'Expelled',
+    'quit' => 'Quit',
+    'on_leave' => 'On Leave',
 ];

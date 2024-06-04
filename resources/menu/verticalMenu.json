@@ -54,6 +54,27 @@
             ]
         },
         {
+            "menuHeader": "menu.academic",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator",
+                "teacher"
+            ]
+        },
+        {
+            "url": "student.index",
+            "name": "menu.student",
+            "icon": "menu-icon tf-icons bx bxs-graduation",
+            "slug": "student.*",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator",
+                "teacher"
+            ]
+        },
+        {
             "menuHeader": "menu.setting",
             "role": [
                 "owner",

@@ -21,4 +21,6 @@ return [
     'setting' => 'Pengaturan',
     'administrator' => 'Admin',
     'student_guardian' => 'Wali Santri',
+    'student' => 'Santri',
+    'academic' => 'Akademik',
 ];

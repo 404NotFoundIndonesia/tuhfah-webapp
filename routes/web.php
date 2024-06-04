@@ -21,6 +21,8 @@ Route::middleware(['locale'])->group(function () {
         Route::resource('teacher', \App\Http\Controllers\TeacherController::class);
         Route::resource('student-guardian', \App\Http\Controllers\StudentGuardianController::class);
 
+        Route::resource('student', \App\Http\Controllers\StudentController::class);
+
         Route::as('account.')->group(function () {
             Route::get('/account/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/account/profile', [ProfileController::class, 'update'])->name('profile.update');
