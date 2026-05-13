@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Enum\Gender;
 use App\Enum\MaritalStatus;
+use App\Enum\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -40,13 +41,33 @@ class UserFactory extends Factory
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
+        return $this->state(fn () => ['email_verified_at' => null]);
+    }
+
+    public function owner(): static
+    {
+        return $this->state(fn () => ['role' => Role::OWNER->value]);
+    }
+
+    public function headmaster(): static
+    {
+        return $this->state(fn () => ['role' => Role::HEADMASTER->value]);
+    }
+
+    public function administrator(): static
+    {
+        return $this->state(fn () => ['role' => Role::ADMINISTRATOR->value]);
+    }
+
+    public function teacher(): static
+    {
+        return $this->state(fn () => ['role' => Role::TEACHER->value]);
+    }
+
+    public function studentGuardian(): static
+    {
+        return $this->state(fn () => ['role' => Role::STUDENT_GUARDIAN->value]);
     }
 }

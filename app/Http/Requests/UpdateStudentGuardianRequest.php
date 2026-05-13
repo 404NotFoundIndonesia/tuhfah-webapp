@@ -14,7 +14,7 @@ class UpdateStudentGuardianRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->isRole(Role::OWNER) || auth()->user()->isRole(Role::HEADMASTER);
+        return auth()->user()->isRole(Role::OWNER) || auth()->user()->isRole(Role::HEADMASTER) || auth()->user()->isRole(Role::ADMINISTRATOR);
     }
 
     /**
@@ -26,7 +26,7 @@ class UpdateStudentGuardianRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->id)],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->route('student_guardian'))],
             'image' => ['nullable', 'image', 'max:2048'],
             'phone' => ['required'],
             'address' => ['nullable'],

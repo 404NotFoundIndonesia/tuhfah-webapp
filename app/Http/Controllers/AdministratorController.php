@@ -19,8 +19,18 @@ class AdministratorController extends Controller
     /**
      * Display a listing of the resource.
      */
+    private function authorizeAccess(): void
+    {
+        abort_unless(
+            auth()->user()->isRole(Role::OWNER) || auth()->user()->isRole(Role::HEADMASTER),
+            403
+        );
+    }
+
     public function index(Request $request): View|JsonResponse
     {
+        $this->authorizeAccess();
+
         if ($request->ajax()) {
             return DataTables::eloquent(User::role(Role::ADMINISTRATOR))
                 ->addColumn('action', function ($row) {
@@ -55,6 +65,8 @@ class AdministratorController extends Controller
      */
     public function create(): View
     {
+        $this->authorizeAccess();
+
         return view('pages.administrator.create');
     }
 
@@ -88,6 +100,8 @@ class AdministratorController extends Controller
      */
     public function show(User $administrator): View
     {
+        $this->authorizeAccess();
+
         return view('pages.administrator.show', [
             'administrator' => $administrator,
         ]);
@@ -98,6 +112,8 @@ class AdministratorController extends Controller
      */
     public function edit(User $administrator): View
     {
+        $this->authorizeAccess();
+
         return view('pages.administrator.edit', [
             'administrator' => $administrator,
         ]);
@@ -135,6 +151,8 @@ class AdministratorController extends Controller
      */
     public function destroy(User $administrator): RedirectResponse
     {
+        $this->authorizeAccess();
+
         try {
             $administrator->delete();
 

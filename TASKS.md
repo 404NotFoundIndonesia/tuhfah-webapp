@@ -33,11 +33,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** —
 
-- [ ] Add role-based factory states to `UserFactory`
-- [ ] Write `AdministratorTest`: index renders, store creates user with ADMINISTRATOR role, update changes fields, destroy deletes user and image, unauthorized roles get 403
-- [ ] Write `TeacherTest`: same structure as above for TEACHER role
-- [ ] Write `StudentGuardianTest`: same structure for STUDENT_GUARDIAN role
-- [ ] All tests pass with `php artisan test --filter AdministratorTest,TeacherTest,StudentGuardianTest`
+- [x] Add role-based factory states to `UserFactory`
+- [x] Write `AdministratorTest`: index renders, store creates user with ADMINISTRATOR role, update changes fields, destroy deletes user and image, unauthorized roles get 403
+- [x] Write `TeacherTest`: same structure as above for TEACHER role
+- [x] Write `StudentGuardianTest`: same structure for STUDENT_GUARDIAN role
+- [x] All tests pass with `php artisan test --filter AdministratorTest,TeacherTest,StudentGuardianTest`
 
 **DoD:**
 - All CRUD actions have at least one happy-path test and one authorization-failure test per disallowed role
@@ -58,15 +58,15 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T1.1 (needs UserFactory states for guardian)
 
-- [ ] Create `StudentFactory` with all fields, random status, and linked `student_guardian_id`
-- [ ] Test: authorized user can view student index (DataTables JSON endpoint)
-- [ ] Test: store creates student record with auto-generated `student_id_number`
-- [ ] Test: male student ID has `I` prefix, female has `A` prefix
-- [ ] Test: student requires a valid `student_guardian_id`
-- [ ] Test: update changes student fields
-- [ ] Test: destroy deletes student and associated image
+- [x] Create `StudentFactory` with all fields, random status, and linked `student_guardian_id`
+- [x] Test: authorized user can view student index (DataTables JSON endpoint)
+- [x] Test: store creates student record with auto-generated `student_id_number`
+- [x] Test: male student ID has `I` prefix, female has `A` prefix
+- [x] Test: student requires a valid `student_guardian_id`
+- [x] Test: update changes student fields
+- [x] Test: destroy deletes student and associated image
 - [ ] Test: filtering by `gender` and `status` returns correct subset
-- [ ] Test: unauthorized role cannot create/update/delete students
+- [x] Test: unauthorized role cannot create/update/delete students
 
 **DoD:**
 - `StudentFactory` produces valid student records
@@ -86,10 +86,10 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** —
 
-- [ ] Test: profile update with image upload stores image and updates `image` field
-- [ ] Test: profile update replaces old image file (old file deleted)
-- [ ] Test: account deletion removes profile image from storage
-- [ ] Test: locale change updates `locale` column and redirects correctly
+- [x] Test: profile update with image upload stores image and updates `image` field
+- [x] Test: profile update replaces old image file (old file deleted)
+- [x] Test: account deletion removes profile image from storage
+- [x] Test: locale change updates `locale` column and redirects correctly
 
 **DoD:**
 - All profile tests pass including image and locale scenarios

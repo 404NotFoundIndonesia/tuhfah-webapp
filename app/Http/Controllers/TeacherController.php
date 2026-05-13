@@ -19,8 +19,18 @@ class TeacherController extends Controller
     /**
      * Display a listing of the resource.
      */
+    private function authorizeAccess(): void
+    {
+        abort_unless(
+            auth()->user()->isRole(Role::OWNER) || auth()->user()->isRole(Role::HEADMASTER) || auth()->user()->isRole(Role::ADMINISTRATOR),
+            403
+        );
+    }
+
     public function index(Request $request): View|JsonResponse
     {
+        $this->authorizeAccess();
+
         if ($request->ajax()) {
             return DataTables::eloquent(User::role(Role::TEACHER))
                 ->addColumn('action', function ($row) {
@@ -55,6 +65,8 @@ class TeacherController extends Controller
      */
     public function create(): View
     {
+        $this->authorizeAccess();
+
         return view('pages.teacher.create');
     }
 
@@ -88,6 +100,8 @@ class TeacherController extends Controller
      */
     public function show(User $teacher): View
     {
+        $this->authorizeAccess();
+
         return view('pages.teacher.show', [
             'teacher' => $teacher,
         ]);
@@ -98,6 +112,8 @@ class TeacherController extends Controller
      */
     public function edit(User $teacher): View
     {
+        $this->authorizeAccess();
+
         return view('pages.teacher.edit', [
             'teacher' => $teacher,
         ]);
@@ -135,6 +151,8 @@ class TeacherController extends Controller
      */
     public function destroy(User $teacher): RedirectResponse
     {
+        $this->authorizeAccess();
+
         try {
             $teacher->delete();
 

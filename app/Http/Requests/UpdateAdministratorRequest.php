@@ -26,7 +26,7 @@ class UpdateAdministratorRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->id)],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->route('administrator'))],
             'image' => ['nullable', 'image', 'max:2048'],
             'phone' => ['required'],
             'address' => ['nullable'],

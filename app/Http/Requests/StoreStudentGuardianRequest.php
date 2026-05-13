@@ -14,7 +14,7 @@ class StoreStudentGuardianRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->user()->isRole(Role::OWNER) || auth()->user()->isRole(Role::HEADMASTER);
+        return auth()->user()->isRole(Role::OWNER) || auth()->user()->isRole(Role::HEADMASTER) || auth()->user()->isRole(Role::ADMINISTRATOR);
     }
 
     /**

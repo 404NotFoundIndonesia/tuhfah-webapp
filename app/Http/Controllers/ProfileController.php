@@ -32,7 +32,7 @@ class ProfileController extends Controller
     {
         $data = $request->validated();
 
-        if (isset($data['image']) || $data['image'] === null) {
+        if (array_key_exists('image', $data)) {
             unset($data['image']);
         }
 

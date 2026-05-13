@@ -20,8 +20,18 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
+    private function authorizeAccess(): void
+    {
+        abort_unless(
+            auth()->user()->isRole(Role::OWNER) || auth()->user()->isRole(Role::HEADMASTER) || auth()->user()->isRole(Role::ADMINISTRATOR),
+            403
+        );
+    }
+
     public function index(Request $request): View|JsonResponse
     {
+        $this->authorizeAccess();
+
         if ($request->ajax()) {
             return DataTables::eloquent(Student::query())
                 ->addColumn('action', function ($row) {
@@ -57,6 +67,8 @@ class StudentController extends Controller
      */
     public function create(): View
     {
+        $this->authorizeAccess();
+
         return view('pages.student.create', [
             'guardians' => User::role(Role::STUDENT_GUARDIAN)->get(),
         ]);
@@ -89,6 +101,8 @@ class StudentController extends Controller
      */
     public function show(Student $student): View
     {
+        $this->authorizeAccess();
+
         return view('pages.student.show', [
             'student' => $student,
         ]);
@@ -99,6 +113,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student): View
     {
+        $this->authorizeAccess();
+
         return view('pages.student.edit', [
             'student' => $student,
             'guardians' => User::role(Role::STUDENT_GUARDIAN)->get(),
@@ -136,6 +152,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student): RedirectResponse
     {
+        $this->authorizeAccess();
+
         try {
             $student->delete();
 

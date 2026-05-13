@@ -26,7 +26,7 @@ class UpdateStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'student_id_number' => ['nullable', Rule::unique('students', 'student_id_number')->ignore($this->id)],
+            'student_id_number' => ['nullable', Rule::unique('students', 'student_id_number')->ignore($this->route('student'))],
             'name' => ['required'],
             'nickname' => ['nullable'],
             'birthplace' => ['nullable'],
