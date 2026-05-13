@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentGuardianController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['locale'])->group(function () {
@@ -17,11 +21,11 @@ Route::middleware(['locale'])->group(function () {
 
         });
 
-        Route::resource('administrator', \App\Http\Controllers\AdministratorController::class);
-        Route::resource('teacher', \App\Http\Controllers\TeacherController::class);
-        Route::resource('student-guardian', \App\Http\Controllers\StudentGuardianController::class);
+        Route::resource('administrator', AdministratorController::class);
+        Route::resource('teacher', TeacherController::class);
+        Route::resource('student-guardian', StudentGuardianController::class);
 
-        Route::resource('student', \App\Http\Controllers\StudentController::class);
+        Route::resource('student', StudentController::class);
 
         Route::as('account.')->group(function () {
             Route::get('/account/profile', [ProfileController::class, 'edit'])->name('profile.edit');

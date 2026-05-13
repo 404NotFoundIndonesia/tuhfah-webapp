@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\StudentStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->string('birthplace')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('gender');
-            $table->string('status')->default(\App\Enum\StudentStatus::CANDIDATE);
+            $table->string('status')->default(StudentStatus::CANDIDATE);
             $table->date('admission_date');
             $table->date('departure_date')->nullable();
             $table->string('image')->nullable();

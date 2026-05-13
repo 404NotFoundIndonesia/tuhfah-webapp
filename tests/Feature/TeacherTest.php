@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Enum\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class TeacherTest extends TestCase
@@ -137,7 +138,7 @@ class TeacherTest extends TestCase
             ->post(route('teacher.store'), $this->validPayload());
 
         $user = User::where('email', 'newteacher@example.com')->first();
-        $this->assertTrue(\Illuminate\Support\Facades\Hash::check('password', $user->password));
+        $this->assertTrue(Hash::check('password', $user->password));
     }
 
     // ── Edit ─────────────────────────────────────────────────────────────────
