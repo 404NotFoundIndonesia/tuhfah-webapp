@@ -54,4 +54,11 @@ return [
     'scope' => 'Scope',
     'published_at' => 'Published At',
     'author_id' => 'Author',
+    // Inventory
+    'quantity' => 'Quantity',
+    'condition' => 'Condition',
+    'acquisition_date' => 'Acquisition Date',
+    'type' => 'Type',
+    'quantity_changed' => 'Quantity Changed',
+    'reason' => 'Reason',
 ];

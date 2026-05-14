@@ -75,6 +75,17 @@
             ]
         },
         {
+            "url": "inventory.index",
+            "name": "menu.inventory",
+            "icon": "menu-icon tf-icons bx bx-box",
+            "slug": "inventory.*",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator"
+            ]
+        },
+        {
             "menuHeader": "menu.setting",
             "role": [
                 "owner",

@@ -119,4 +119,18 @@ return [
     'notification' => 'Notification',
     'email_notifications' => 'Email Notifications',
     'receive_email_notifications' => 'Receive email notifications for attendance, payments, and learning progress updates',
+
+    // Inventory
+    'good' => 'Good',
+    'damaged' => 'Damaged',
+    'lost' => 'Lost',
+    'usage' => 'Usage',
+    'disposal' => 'Disposal',
+    'inventory_created' => 'Inventory item created successfully.',
+    'inventory_updated' => 'Inventory item updated successfully.',
+    'inventory_deleted' => 'Inventory item deleted.',
+    'inventory_log_created' => 'Usage/disposal recorded successfully.',
+    'no_inventory_records' => 'No inventory records found.',
+    'log_usage' => 'Record Usage / Disposal',
+    'usage_history' => 'Usage / Disposal History',
 ];

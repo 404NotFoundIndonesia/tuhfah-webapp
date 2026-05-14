@@ -805,11 +805,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T1.1
 
-- [ ] `ItemCondition` enum: `GOOD`, `DAMAGED`, `LOST`
-- [ ] Migration columns: `id`, `name` (string), `quantity` (integer), `condition` (string), `acquisition_date` (date), `notes` (nullable text), `timestamps`
-- [ ] Model: fillable, cast `condition` to `ItemCondition`, cast `acquisition_date` to `date`
-- [ ] Factory with all condition states
-- [ ] Unit test: `ItemCondition` enum has correct values
+- [x] `ItemCondition` enum: `GOOD`, `DAMAGED`, `LOST`
+- [x] Migration columns: `id`, `name` (string), `quantity` (integer), `condition` (string), `acquisition_date` (date), `notes` (nullable text), `timestamps`
+- [x] Model: fillable, cast `condition` to `ItemCondition`, cast `acquisition_date` to `date`
+- [x] Factory with all condition states
+- [x] Unit test: `ItemCondition` enum has correct values
 
 **DoD:**
 - Migration runs clean
@@ -830,12 +830,12 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T7.1
 
-- [ ] RESTful routes under `/inventory`
-- [ ] Gate: `owner`, `headmaster`, `administrator` can view; `administrator` can create/update/delete
-- [ ] Validation: `name` required, `quantity` required integer ≥ 0, `condition` valid enum value, `acquisition_date` valid date
-- [ ] Index page: server-side DataTable filterable by condition
-- [ ] Flash notifications and i18n keys
-- [ ] Feature test: CRUD operations, authorization, filtering
+- [x] RESTful routes under `/inventory`
+- [x] Gate: `owner`, `headmaster`, `administrator` can view; `administrator` can create/update/delete
+- [x] Validation: `name` required, `quantity` required integer ≥ 0, `condition` valid enum value, `acquisition_date` valid date
+- [x] Index page: server-side DataTable filterable by condition
+- [x] Flash notifications and i18n keys
+- [x] Feature test: CRUD operations, authorization, filtering
 
 **DoD:**
 - All CRUD operations work and are tested
@@ -856,11 +856,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T7.2
 
-- [ ] `inventory_logs` table: `id`, `inventory_id` (FK), `type` (usage/disposal), `quantity_changed` (integer), `reason` (string), `recorded_by` (FK → users.id), `timestamps`
-- [ ] Route `POST /inventory/{inventory}/log` → creates log entry and decrements `inventories.quantity`
-- [ ] Validation: `quantity_changed` must not exceed current `quantity`
-- [ ] Gate: `administrator` only
-- [ ] Feature test: logging usage decrements quantity; over-quantity triggers validation error
+- [x] `inventory_logs` table: `id`, `inventory_id` (FK), `type` (usage/disposal), `quantity_changed` (integer), `reason` (string), `recorded_by` (FK → users.id), `timestamps`
+- [x] Route `POST /inventory/{inventory}/log` → creates log entry and decrements `inventories.quantity`
+- [x] Validation: `quantity_changed` must not exceed current `quantity`
+- [x] Gate: `administrator` only
+- [x] Feature test: logging usage decrements quantity; over-quantity triggers validation error
 
 **DoD:**
 - Quantity cannot go negative
@@ -1048,7 +1048,7 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 | Phase 4 — Financial Management | T4.1, T4.2, T4.3, T4.4, T4.5, T4.6, T4.7 | Done |
 | Phase 5 — Announcements | T5.1, T5.2, T5.3, T5.4 | Done |
 | Phase 6 — Notifications | T6.1, T6.2, T6.3, T6.4, T6.5 | Done |
-| Phase 7 — Inventory | T7.1, T7.2, T7.3 | Pending |
+| Phase 7 — Inventory | T7.1, T7.2, T7.3 | Done |
 | Phase 8 — Reporting & Analytics | T8.1, T8.2, T8.3, T8.4 | Pending |
 | Cross-Cutting | TX.1, TX.2, TX.3, TX.4 | Ongoing |
 | **Total** | **34 tasks** | **0 / 34 done** |

@@ -54,4 +54,11 @@ return [
     'scope' => 'Jangkauan',
     'published_at' => 'Dipublikasikan Pada',
     'author_id' => 'Penulis',
+    // Inventory
+    'quantity' => 'Jumlah',
+    'condition' => 'Kondisi',
+    'acquisition_date' => 'Tanggal Perolehan',
+    'type' => 'Tipe',
+    'quantity_changed' => 'Jumlah Perubahan',
+    'reason' => 'Alasan',
 ];

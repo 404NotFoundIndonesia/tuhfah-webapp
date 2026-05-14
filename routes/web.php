@@ -5,6 +5,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\HonorariumController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LearningProgressController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PageController;
@@ -98,6 +99,18 @@ Route::middleware(['locale'])->group(function () {
             Route::put('/{announcement}', [AnnouncementController::class, 'update'])->name('update');
             Route::patch('/{announcement}/publish', [AnnouncementController::class, 'publish'])->name('publish');
             Route::delete('/{announcement}', [AnnouncementController::class, 'destroy'])->name('destroy');
+        });
+
+        // Inventory — explicit routes so /create resolves before {inventory}
+        Route::prefix('inventory')->name('inventory.')->group(function () {
+            Route::get('/', [InventoryController::class, 'index'])->name('index');
+            Route::get('/create', [InventoryController::class, 'create'])->name('create');
+            Route::post('/', [InventoryController::class, 'store'])->name('store');
+            Route::get('/{inventory}', [InventoryController::class, 'show'])->name('show');
+            Route::get('/{inventory}/edit', [InventoryController::class, 'edit'])->name('edit');
+            Route::put('/{inventory}', [InventoryController::class, 'update'])->name('update');
+            Route::delete('/{inventory}', [InventoryController::class, 'destroy'])->name('destroy');
+            Route::post('/{inventory}/log', [InventoryController::class, 'log'])->name('log');
         });
 
         // Notifications

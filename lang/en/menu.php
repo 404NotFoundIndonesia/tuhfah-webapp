@@ -34,4 +34,5 @@ return [
     'honorarium' => 'Honorariums',
     'announcement' => 'Announcements',
     'notifications' => 'Notifications',
+    'inventory' => 'Inventory',
 ];

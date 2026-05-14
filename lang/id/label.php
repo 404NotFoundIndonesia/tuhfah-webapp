@@ -119,4 +119,18 @@ return [
     'notification' => 'Notifikasi',
     'email_notifications' => 'Notifikasi Email',
     'receive_email_notifications' => 'Terima notifikasi email untuk absensi, pembayaran, dan pembaruan progres belajar',
+
+    // Inventory
+    'good' => 'Baik',
+    'damaged' => 'Rusak',
+    'lost' => 'Hilang',
+    'usage' => 'Penggunaan',
+    'disposal' => 'Pemusnahan',
+    'inventory_created' => 'Item inventaris berhasil dibuat.',
+    'inventory_updated' => 'Item inventaris berhasil diperbarui.',
+    'inventory_deleted' => 'Item inventaris berhasil dihapus.',
+    'inventory_log_created' => 'Penggunaan/pemusnahan berhasil dicatat.',
+    'no_inventory_records' => 'Tidak ada catatan inventaris.',
+    'log_usage' => 'Catat Penggunaan / Pemusnahan',
+    'usage_history' => 'Riwayat Penggunaan / Pemusnahan',
 ];

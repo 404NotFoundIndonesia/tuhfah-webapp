@@ -34,4 +34,5 @@ return [
     'honorarium' => 'Honorarium',
     'announcement' => 'Pengumuman',
     'notifications' => 'Notifikasi',
+    'inventory' => 'Inventaris',
 ];
