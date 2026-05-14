@@ -984,8 +984,8 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** Each phase task that adds UI
 
-- [ ] Every new label, button, error message, and notification text has an entry in `lang/id/*.php` and `lang/en/*.php`
-- [ ] No hardcoded Indonesian or English strings in Blade views — all use `__('key')` or `@lang`
+- [x] Every new label, button, error message, and notification text has an entry in `lang/id/*.php` and `lang/en/*.php`
+- [x] No hardcoded Indonesian or English strings in Blade views — all use `__('key')` or `@lang`
 
 **DoD:** Application is fully operable in both languages with no missing translation keys (testable via `php artisan lang:publish` + manual review or automated missing-key detection)
 
@@ -997,13 +997,13 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** Each phase that adds a new module
 
-- [ ] Sidebar shows Attendance link for admin and teacher roles (Phase 2)
-- [ ] Sidebar shows Learning Progress link for teacher, admin, headmaster (Phase 3)
-- [ ] Sidebar shows Finance link for admin, headmaster, owner (Phase 4)
-- [ ] Sidebar shows Announcements link for all roles (Phase 5)
-- [ ] Sidebar shows Inventory link for admin, headmaster, owner (Phase 7)
-- [ ] Sidebar shows Reports link for admin, headmaster, owner (Phase 8)
-- [ ] Guardian sidebar shows: My Child's Attendance, My Child's Progress, My Child's Payments (Phases 2, 3, 4)
+- [x] Sidebar shows Attendance link for admin and teacher roles (Phase 2)
+- [x] Sidebar shows Learning Progress link for teacher, admin, headmaster (Phase 3)
+- [x] Sidebar shows Finance link for admin, headmaster, owner (Phase 4)
+- [x] Sidebar shows Announcements link for all roles (Phase 5)
+- [x] Sidebar shows Inventory link for admin, headmaster, owner (Phase 7)
+- [x] Sidebar shows Reports link for admin, headmaster, owner (Phase 8)
+- [x] Guardian sidebar shows: My Child's Attendance, My Child's Progress, My Child's Payments (Phases 2, 3, 4)
 
 **DoD:** No sidebar link appears for a role that does not have permission to access the route
 
@@ -1013,8 +1013,8 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Description:** All new PHP files must pass Laravel Pint before merge.
 
-- [ ] Run `./vendor/bin/pint` after completing each task
-- [ ] CI/CD or pre-commit check runs Pint
+- [x] Run `./vendor/bin/pint` after completing each task
+- [x] CI/CD or pre-commit check runs Pint
 
 **DoD:** `./vendor/bin/pint --test` exits with code 0 on all new files
 
@@ -1026,13 +1026,13 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** Each phase's factory tasks
 
-- [ ] `AttendanceSeeder`: seed 30 days of attendance for all seeded students
-- [ ] `LearningProgressSeeder`: seed 3 months of weekly progress records per student
-- [ ] `PaymentSeeder`: seed 6 months of payments per student with mixed statuses
-- [ ] `HonorariumSeeder`: seed 6 months of honorariums per teacher
-- [ ] `AnnouncementSeeder`: seed 5 public and 5 internal announcements
-- [ ] `InventorySeeder`: seed 10 inventory items with mixed conditions
-- [ ] Update `DatabaseSeeder` to call all new seeders in correct order
+- [x] `AttendanceSeeder`: seed 30 days of attendance for all seeded students
+- [x] `LearningProgressSeeder`: seed 3 months of weekly progress records per student
+- [x] `PaymentSeeder`: seed 6 months of payments per student with mixed statuses
+- [x] `HonorariumSeeder`: seed 6 months of honorariums per teacher
+- [x] `AnnouncementSeeder`: seed 5 public and 5 internal announcements
+- [x] `InventorySeeder`: seed 10 inventory items with mixed conditions
+- [x] Update `DatabaseSeeder` to call all new seeders in correct order
 
 **DoD:** `php artisan migrate:fresh --seed` completes without errors and populates all tables
 
@@ -1050,5 +1050,5 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 | Phase 6 — Notifications | T6.1, T6.2, T6.3, T6.4, T6.5 | Done |
 | Phase 7 — Inventory | T7.1, T7.2, T7.3 | Done |
 | Phase 8 — Reporting & Analytics | T8.1, T8.2, T8.3, T8.4 | Done |
-| Cross-Cutting | TX.1, TX.2, TX.3, TX.4 | Ongoing |
-| **Total** | **34 tasks** | **0 / 34 done** |
+| Cross-Cutting | TX.1, TX.2, TX.3, TX.4 | Done |
+| **Total** | **34 tasks** | **31 / 34 done** |

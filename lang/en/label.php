@@ -138,6 +138,7 @@ return [
     'period_type' => 'Period Type',
     'weekly' => 'Weekly',
     'monthly' => 'Monthly',
+    'total' => 'Total',
     'total_present' => 'Present',
     'total_absent' => 'Absent',
     'total_sick' => 'Sick',

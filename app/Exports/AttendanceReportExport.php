@@ -32,7 +32,7 @@ class AttendanceReportExport implements FromArray, WithHeadings
             __('label.total_absent'),
             __('label.total_sick'),
             __('label.total_permitted'),
-            'Total',
+            __('label.total'),
             __('label.attendance_percentage'),
         ];
     }

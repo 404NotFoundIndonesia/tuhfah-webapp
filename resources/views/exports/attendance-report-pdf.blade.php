@@ -26,7 +26,7 @@
                 <th>{{ __('label.total_absent') }}</th>
                 <th>{{ __('label.total_sick') }}</th>
                 <th>{{ __('label.total_permitted') }}</th>
-                <th>Total</th>
+                <th>{{ __('label.total') }}</th>
                 <th>{{ __('label.attendance_percentage') }}</th>
             </tr>
         </thead>

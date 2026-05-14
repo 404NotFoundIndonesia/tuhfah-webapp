@@ -75,6 +75,126 @@
             ]
         },
         {
+            "url": "attendance.index",
+            "name": "menu.attendance",
+            "icon": "menu-icon tf-icons bx bx-check-square",
+            "slug": "attendance.*",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator",
+                "teacher"
+            ]
+        },
+        {
+            "url": "learning-progress.index",
+            "name": "menu.learning_progress",
+            "icon": "menu-icon tf-icons bx bx-book-open",
+            "slug": "learning-progress.*",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator",
+                "teacher"
+            ]
+        },
+        {
+            "menuHeader": "menu.finance",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator"
+            ]
+        },
+        {
+            "url": "payment.index",
+            "name": "menu.payment",
+            "icon": "menu-icon tf-icons bx bx-money",
+            "slug": "payment.*",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator"
+            ]
+        },
+        {
+            "url": "honorarium.index",
+            "name": "menu.honorarium",
+            "icon": "menu-icon tf-icons bx bx-wallet",
+            "slug": "honorarium.*",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator"
+            ]
+        },
+        {
+            "menuHeader": "menu.academic",
+            "role": [
+                "student_guardian"
+            ]
+        },
+        {
+            "url": "attendance.guardian",
+            "name": "menu.child_attendance",
+            "icon": "menu-icon tf-icons bx bx-check-square",
+            "slug": "attendance.guardian",
+            "role": [
+                "student_guardian"
+            ]
+        },
+        {
+            "url": "learning-progress.guardian",
+            "name": "menu.child_progress",
+            "icon": "menu-icon tf-icons bx bx-book-open",
+            "slug": "learning-progress.guardian",
+            "role": [
+                "student_guardian"
+            ]
+        },
+        {
+            "url": "payment.guardian",
+            "name": "menu.child_payment",
+            "icon": "menu-icon tf-icons bx bx-money",
+            "slug": "payment.guardian",
+            "role": [
+                "student_guardian"
+            ]
+        },
+        {
+            "menuHeader": "menu.announcement",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator",
+                "teacher",
+                "student_guardian"
+            ]
+        },
+        {
+            "url": "announcement.index",
+            "name": "menu.announcement",
+            "icon": "menu-icon tf-icons bx bx-bell",
+            "slug": "announcement.*",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator",
+                "teacher",
+                "student_guardian"
+            ]
+        },
+        {
+            "menuHeader": "menu.setting",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator",
+                "teacher",
+                "student_guardian"
+            ]
+        },
+        {
             "url": "inventory.index",
             "name": "menu.inventory",
             "icon": "menu-icon tf-icons bx bx-box",
@@ -127,16 +247,6 @@
                         "teacher"
                     ]
                 }
-            ]
-        },
-        {
-            "menuHeader": "menu.setting",
-            "role": [
-                "owner",
-                "headmaster",
-                "administrator",
-                "teacher",
-                "student_guardian"
             ]
         },
         {

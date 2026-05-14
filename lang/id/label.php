@@ -138,6 +138,7 @@ return [
     'period_type' => 'Jenis Periode',
     'weekly' => 'Mingguan',
     'monthly' => 'Bulanan',
+    'total' => 'Total',
     'total_present' => 'Hadir',
     'total_absent' => 'Absen',
     'total_sick' => 'Sakit',
