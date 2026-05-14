@@ -5,101 +5,180 @@
         </a>
     </p>
 
- [![GitHub Stars](https://img.shields.io/github/stars/404NotFoundIndonesia/tuhfah-webapp.svg)](https://github.com/404NotFoundIndonesia/tuhfah-webapp/stargazers)
- [![GitHub license](https://img.shields.io/github/license/404NotFoundIndonesia/tuhfah-webapp)](https://github.com/404NotFoundIndonesia/tuhfah-webapp/blob/main/LICENSE)
- 
+[![GitHub Stars](https://img.shields.io/github/stars/404NotFoundIndonesia/tuhfah-webapp.svg)](https://github.com/404NotFoundIndonesia/tuhfah-webapp/stargazers)
+[![GitHub license](https://img.shields.io/github/license/404NotFoundIndonesia/tuhfah-webapp)](https://github.com/404NotFoundIndonesia/tuhfah-webapp/blob/main/LICENSE)
+[![Test](https://github.com/404NotFoundIndonesia/tuhfah-webapp/actions/workflows/test.yml/badge.svg)](https://github.com/404NotFoundIndonesia/tuhfah-webapp/actions/workflows/test.yml)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![Laravel](https://img.shields.io/badge/Laravel-11-FF2D20?logo=laravel&logoColor=white)](https://laravel.com/)
+
 </div>
 
-# Tuhfah Web Application
+# Tuhfah — Islamic Education Management System
 
-__Tuhfah__ is a cutting-edge information and management system designed to revolutionize Islamic Education Parks (TPQs) or Islamic Education Centers (TPAs). It offers a seamless and integrated platform for efficient administration and enhanced learning experiences within these institutions.
+**Tuhfah** is a comprehensive information and management system built for Islamic Education Parks (Taman Pendidikan Al-Qur'an / TPQ) and Islamic Education Centers (Taman Pendidikan Agama / TPA). It provides a unified platform for administrators, teachers, and student guardians to manage every aspect of institution operations — from student registration and attendance to financial payments and learning progress reports.
 
-With __Tuhfah__, administrators can streamline registration processes, manage user roles, and track attendance effortlessly. Teachers benefit from tools to monitor students' learning progress and input educational data seamlessly. Students and guardians gain access to personalized learning insights and updates.
+> **Tuhfah** (تُحْفَة) is an Arabic word meaning *gift* or *masterpiece* — reflecting the goal of delivering an exceptional tool to support Islamic education.
 
-Financial management becomes more transparent and convenient with integrated online payment systems for fees and honorariums. The system also facilitates inventory management and efficient communication through announcements.
-
-__Tuhfah__ is designed to be user-friendly, intuitive, and accessible across devices, ensuring a smooth experience for all stakeholders. It aims to elevate the standards of Islamic education management and empower institutions with modern technology solutions.
-
-## Goals
-
-- Develop a robust information and management system tailored for TPQs/TPAs.
-- Improve administrative efficiency, data management, and learning processes within Islamic education institutions.
-- Enable multiple TPQs/TPAs to use the system concurrently.
-- Provide a seamless and integrated experience for administrators, teachers, and students.
+---
 
 ## Features
 
-- Registration and User Management:
-    - Digital registration form for new students.
-    - Admin capabilities to add, remove, and manage users (admins, teachers, and students).
-    - User roles and permissions management.
-- Attendance Management:
-    - Real-time attendance tracking for students and teachers via mobile and web applications.
-    - Automatic integration of attendance data into the management system.
-- Learning Progress Monitoring:
-    - Teachers can input and monitor students' learning progress.
-    - Admin and guardians can track students' educational development.
-- Financial Management:
-    - Online payment integration for tuition fees and teacher honorariums.
-    - Automatic financial record-keeping and manual input options for admins.
-- Inventory and Announcements:
-    - Inventory management for physical assets.
-    - Announcement creation and dissemination by admins, accessible to the public through the official TPQ/TPA website.
-- Additional Features:
-    - Notification system for attendance reminders, payment deadlines, and learning updates.
-    - Integration with online payment gateways for seamless financial transactions.
-    - Reporting and data analysis tools for performance evaluation and educational insights.
+### Role-Based Access Control
+Five distinct roles with scoped permissions: **Owner**, **Headmaster**, **Administrator**, **Teacher**, and **Student Guardian**. Each role sees only what they need.
 
-## Technical Specifications
+### Student Management
+Register and manage student profiles including personal details, gender, enrollment status, and guardian assignment. Student IDs are auto-generated using the Hijri calendar for a culturally relevant identifier.
 
-- __Backend__: PHP 8.3, Laravel 11.0
-- __Database__: MySQL Community Server
-- __Frontend__: HTML, CSS, JavaScript
+### Attendance Tracking
+- Batch attendance recording for all active students in one form
+- Teachers can submit their own daily self-attendance
+- Guardians receive in-app (and optional email) notifications when their child is absent, sick, or on permitted leave
+- Monthly summary statistics per student
 
-## Get Started
+### Learning Progress Monitoring
+Teachers record subject-by-subject milestones with optional scores and notes. Progress is visualized through interactive charts (ApexCharts). Guardians are notified when a new record is saved for their child.
 
-### Get the Source Code
-Of course, you need to put this code on your computer first. There are two ways to do this: by __downloading the project zip file__ or __by using Git (recommended)__.
+### Financial Management
+- **Tuition Payments** — record, track, and mark payments per student per period
+- **Teacher Honorariums** — record and manage monthly salary disbursements
+- **Overdue Detection** — a scheduled Artisan command automatically transitions unpaid payments past their due date to *Overdue* and notifies guardians and administrators
+- **Midtrans Integration** — guardians can pay outstanding fees directly via a payment gateway
+- **Export** — download payment and honorarium reports as XLSX or PDF
 
-1. **Download the Project Zip**
+### Announcements
+Administrators can draft and publish announcements scoped as **Public** (visible on the welcome page without login) or **Internal** (visible only to authenticated users). Drafts can be scheduled or published immediately.
 
-    You can click on [this link](https://github.com/404NotFoundIndonesia/tuhfah-webapp/archive/refs/heads/main.zip) to download the zip file of this project.
+### Notification System
+In-app notification bell with unread badge. Notifications are dispatched for:
+- Student absences / sick / permitted leave → guardian
+- Payment overdue → guardian + all administrators
+- New learning progress entry → guardian
 
-2. **Git Clone**
+Users can opt out of email delivery per their profile preferences.
 
-    Make sure that you have installed git. Open the directory where you want to place the source code in the terminal. Then, run the following command:
-    ```shell
-    git clone git@github.com:404NotFoundIndonesia/tuhfah-webapp.git
-    ```
+### Reporting & Analytics
+*(Planned — Phase 8)*
 
-### Install Dependencies
+---
 
-__Make sure this project is open in your command line interface__. To confirm your current active directory in the terminal, use the following command: 
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | PHP 8.2+, Laravel 11 |
+| Database | MySQL (production), SQLite in-memory (tests) |
+| Frontend | Bootstrap 5, jQuery, ApexCharts |
+| Auth | Laravel Breeze (session-based) |
+| Payments | Midtrans (Snap) |
+| Excel Export | Maatwebsite Laravel Excel |
+| PDF Export | barryvdh/laravel-dompdf |
+| DataTables | Yajra Laravel DataTables |
+| Hijri Calendar | pharaonic/laravel-hijri |
+| Testing | PHPUnit 11, 340+ tests |
+
+---
+
+## Getting Started
+
+### Requirements
+
+- PHP 8.2+
+- Composer
+- MySQL 8+ (or SQLite for local development)
+- Node.js (only if you modify front-end assets)
+
+### Installation
+
+**1. Clone the repository**
+
 ```shell
-pwd
+git clone git@github.com:404NotFoundIndonesia/tuhfah-webapp.git
+cd tuhfah-webapp
 ```
 
-To install backend dependencies, use the following command:
+**2. Run the setup script**
+
 ```shell
 composer setup
 ```
 
+This single command installs dependencies, copies `.env.example` to `.env`, generates the application key, caches config, runs migrations, and links storage.
 
-### How to Run
+**3. Configure your environment**
 
-To run the backend server, use the following command:
+Open `.env` and set your database credentials and any third-party service keys:
+
+```dotenv
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=tuhfah
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Midtrans payment gateway (optional)
+MIDTRANS_SERVER_KEY=
+MIDTRANS_CLIENT_KEY=
+MIDTRANS_IS_PRODUCTION=false
+```
+
+**4. Start the development server**
+
 ```shell
 php artisan serve
 ```
 
-Open `http://localhost:8000` in your browser to access Tuhfah Webapp. When you want to access __Tuhfah__ in a web browser, make sure you **do not close or stop both of those processes**.
+Open [http://localhost:8000](http://localhost:8000) in your browser.
+
+---
+
+## Running Tests
+
+The test suite uses an in-memory SQLite database — no separate database setup required.
+
+```shell
+php artisan test
+```
+
+Expected output: **340 tests, 597 assertions, 0 failures.**
+
+---
+
+## Scheduled Commands
+
+Register the scheduler in your server's cron to enable automatic overdue detection:
+
+```cron
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
+The `payments:mark-overdue` command runs daily and transitions eligible unpaid payments to *Overdue*, dispatching notifications to guardians and administrators.
+
+---
+
+## Project Structure
+
+```
+app/
+├── Console/Commands/       # MarkOverduePayments
+├── Enum/                   # Role, AttendanceStatus, PaymentStatus, AnnouncementScope, ...
+├── Exports/                # PaymentExport, HonorariumExport (XLSX + PDF)
+├── Http/Controllers/       # Feature controllers per domain
+├── Models/                 # Eloquent models
+├── Notifications/          # StudentAbsent, PaymentOverdue, NewLearningProgress
+└── Services/               # AttendanceService, PaymentGatewayService
+```
+
+---
 
 ## Reference
 
-- [Effendi, M. Iqbal dan Nafila Fayruz. 2021. Sistem Informasi dan Manajemen Taman Pendidikan Al-Qur'an Imam Syafi'i Banjarmasin Berbasis Web dan Aplikasi Android. _Tugas Akhir Diploma 3_. Banjarmasin: Politeknik Negeri Banjarmasin.](https://drive.google.com/file/d/1IcnC0AzTEy1HQBOAmqEvJy7vNhtv4uMu/view?usp=sharing)
+- [Effendi, M. Iqbal dan Nafila Fayruz. 2021. *Sistem Informasi dan Manajemen Taman Pendidikan Al-Qur'an Imam Syafi'i Banjarmasin Berbasis Web dan Aplikasi Android.* Tugas Akhir Diploma 3. Banjarmasin: Politeknik Negeri Banjarmasin.](https://drive.google.com/file/d/1IcnC0AzTEy1HQBOAmqEvJy7vNhtv4uMu/view?usp=sharing)
 
-- [Fitri dkk. (2022). Sistem Informasi dan Manajemen Taman Pendidikan Al-Qur'an Imam Syafi'i Banjarmasin Berbasis Web. _Jurnal Impact_, 4(1), 4-11.](https://ejurnal.poliban.ac.id/index.php/impact/article/view/1252/965)
+- [Fitri dkk. (2022). Sistem Informasi dan Manajemen Taman Pendidikan Al-Qur'an Imam Syafi'i Banjarmasin Berbasis Web. *Jurnal Impact*, 4(1), 4–11.](https://ejurnal.poliban.ac.id/index.php/impact/article/view/1252/965)
+
+---
 
 ## License
 
-__Tuhfah Web Application__ is open-sourced software licensed under the [MIT license](https://github.com/404NotFoundIndonesia/tuhfah-webapp?tab=MIT-1-ov-file).
+**Tuhfah Web Application** is open-source software licensed under the [MIT License](https://github.com/404NotFoundIndonesia/tuhfah-webapp/blob/main/LICENSE).
