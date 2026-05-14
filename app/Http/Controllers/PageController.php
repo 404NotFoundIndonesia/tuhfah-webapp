@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\AnnouncementScope;
+use App\Models\Announcement;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -11,12 +13,23 @@ class PageController extends Controller
 {
     public function welcome(Request $request): View
     {
-        return view('welcome');
+        $announcements = Announcement::published()
+            ->where('scope', AnnouncementScope::PUBLIC->value)
+            ->latest('published_at')
+            ->take(10)
+            ->get();
+
+        return view('welcome', compact('announcements'));
     }
 
     public function dashboard(Request $request): View
     {
-        return view('pages.dashboard');
+        $announcements = Announcement::published()
+            ->latest('published_at')
+            ->take(5)
+            ->get();
+
+        return view('pages.dashboard', compact('announcements'));
     }
 
     public function locale(Request $request): RedirectResponse

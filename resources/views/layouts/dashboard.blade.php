@@ -3,15 +3,19 @@
 @section('body')
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
+            @auth
             <!-- Menu -->
             @include('components.sidebar')
             <!-- / Menu -->
+            @endauth
 
             <!-- Layout container -->
             <div class="layout-page">
+                @auth
                 <!-- Navbar -->
                 @include('components.navbar')
                 <!-- / Navbar -->
+                @endauth
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
@@ -93,7 +97,7 @@
     @endsession
 
     <script>
-        document.getElementById('logout-menu-button-on-nav').addEventListener('click', function () {
+        document.getElementById('logout-menu-button-on-nav')?.addEventListener('click', function () {
             document.getElementById('logout-menu-form-on-nav').submit();
         });
     </script>

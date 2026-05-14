@@ -91,4 +91,18 @@ return [
     'all_periods' => 'All Periods',
     'pay_now' => 'Pay Now',
     'outstanding_payments' => 'Outstanding Payments',
+    // Announcement
+    'announcement_created' => 'Announcement created successfully.',
+    'announcement_updated' => 'Announcement updated successfully.',
+    'announcement_published' => 'Announcement published.',
+    'announcement_deleted' => 'Announcement deleted.',
+    'draft' => 'Draft',
+    'published' => 'Published',
+    'publish_now' => 'Publish Now',
+    'scope_public' => 'Public',
+    'scope_internal' => 'Internal',
+    'read_more' => 'Read more',
+    'no_announcements' => 'No announcements found.',
+    'latest_announcements' => 'Latest Announcements',
+    'view_all' => 'View all',
 ];

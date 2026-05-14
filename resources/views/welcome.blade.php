@@ -162,6 +162,31 @@
                         </div>
                     </main>
 
+                    @if($announcements->isNotEmpty())
+                        <section class="mt-6">
+                            <h2 class="text-xl font-semibold text-black dark:text-white mb-4">
+                                {{ __('label.latest_announcements') }}
+                            </h2>
+                            <div class="grid gap-4">
+                                @foreach($announcements as $announcement)
+                                    <div class="rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] dark:bg-zinc-900 dark:ring-zinc-800">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="text-sm font-semibold text-black dark:text-white">
+                                                {{ $announcement->title }}
+                                            </h3>
+                                            <small class="text-black/50 dark:text-white/50">
+                                                {{ $announcement->published_at->format('Y-m-d') }}
+                                            </small>
+                                        </div>
+                                        <p class="text-sm/relaxed text-black/70 dark:text-white/70">
+                                            {{ Str::limit(strip_tags($announcement->body), 200) }}
+                                        </p>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </section>
+                    @endif
+
                     <footer class="py-16 text-center text-sm text-black dark:text-white/70">
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </footer>

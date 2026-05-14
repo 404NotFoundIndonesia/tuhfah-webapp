@@ -15,11 +15,11 @@
 
     <ul class="menu-inner py-1">
         @foreach ($menuData->menu as $menu)
-            @if (isset($menu->menuHeader) && in_array(auth()->user()->role, $menu->role))
+            @if (isset($menu->menuHeader) && in_array(auth()->user()?->role, $menu->role))
                 <li class="menu-header small text-uppercase">
                     <span class="menu-header-text">{{ __($menu->menuHeader) }}</span>
                 </li>
-            @elseif (in_array(auth()->user()->role, $menu->role))
+            @elseif (in_array(auth()->user()?->role, $menu->role))
                 <li class="menu-item {{ Route::is($menu->slug) ? 'active open' : '' }}">
                     <a href="{{ isset($menu->url) ? route($menu->url) : 'javascript:void(0);' }}"
                        class="{{ isset($menu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}"
@@ -37,7 +37,7 @@
                     @isset($menu->submenu)
                         <ul class="menu-sub">
                             @foreach ($menu->submenu as $submenu)
-                                @if (in_array(auth()->user()->role, $submenu->role))
+                                @if (in_array(auth()->user()?->role, $submenu->role))
                                     <li class="menu-item {{ Route::is($submenu->slug) ? 'active open' : '' }}">
                                         <a href="{{ isset($submenu->url) ? route($submenu->url) : 'javascript:void(0)' }}"
                                            class="{{ isset($submenu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}"

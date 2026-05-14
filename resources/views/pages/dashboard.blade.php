@@ -444,6 +444,39 @@
     </div>
     <!--/ Transactions -->
   </div>
+
+  {{-- Announcements (T5.4) --}}
+  <div class="row mt-2">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h5 class="card-title m-0">{{ __('label.latest_announcements') }}</h5>
+          <a href="{{ route('announcement.index') }}" class="btn btn-sm btn-outline-primary">
+            {{ __('label.view_all') }}
+          </a>
+        </div>
+        <div class="card-body">
+          @forelse($announcements as $announcement)
+            <div class="d-flex align-items-start mb-3 pb-3 {{ !$loop->last ? 'border-bottom' : '' }}">
+              <div class="flex-grow-1">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <a href="{{ route('announcement.show', $announcement) }}" class="fw-medium text-body">
+                    {{ $announcement->title }}
+                  </a>
+                  <small class="text-muted ms-2 text-nowrap">
+                    {{ $announcement->published_at?->format('Y-m-d') }}
+                  </small>
+                </div>
+                <p class="text-muted small mb-0">{{ Str::limit(strip_tags($announcement->body), 150) }}</p>
+              </div>
+            </div>
+          @empty
+            <p class="text-muted mb-0">{{ __('label.no_announcements') }}</p>
+          @endforelse
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @push('style')

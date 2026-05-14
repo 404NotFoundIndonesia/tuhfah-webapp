@@ -91,4 +91,18 @@ return [
     'all_periods' => 'Semua Periode',
     'pay_now' => 'Bayar Sekarang',
     'outstanding_payments' => 'Tagihan Belum Lunas',
+    // Announcement
+    'announcement_created' => 'Pengumuman berhasil dibuat.',
+    'announcement_updated' => 'Pengumuman berhasil diperbarui.',
+    'announcement_published' => 'Pengumuman telah dipublikasikan.',
+    'announcement_deleted' => 'Pengumuman berhasil dihapus.',
+    'draft' => 'Draf',
+    'published' => 'Dipublikasikan',
+    'publish_now' => 'Publikasikan Sekarang',
+    'scope_public' => 'Publik',
+    'scope_internal' => 'Internal',
+    'read_more' => 'Selengkapnya',
+    'no_announcements' => 'Tidak ada pengumuman.',
+    'latest_announcements' => 'Pengumuman Terbaru',
+    'view_all' => 'Lihat semua',
 ];

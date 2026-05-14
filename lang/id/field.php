@@ -48,5 +48,10 @@ return [
     'amount' => 'Jumlah',
     'due_date' => 'Tanggal Jatuh Tempo',
     'paid_at' => 'Dibayar Pada',
-    'status' => 'Status',
+    // Announcement
+    'title' => 'Judul',
+    'body' => 'Isi',
+    'scope' => 'Jangkauan',
+    'published_at' => 'Dipublikasikan Pada',
+    'author_id' => 'Penulis',
 ];

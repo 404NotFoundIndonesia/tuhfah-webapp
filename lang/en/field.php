@@ -48,5 +48,10 @@ return [
     'amount' => 'Amount',
     'due_date' => 'Due Date',
     'paid_at' => 'Paid At',
-    'status' => 'Status',
+    // Announcement
+    'title' => 'Title',
+    'body' => 'Content',
+    'scope' => 'Scope',
+    'published_at' => 'Published At',
+    'author_id' => 'Author',
 ];

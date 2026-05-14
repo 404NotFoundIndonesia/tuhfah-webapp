@@ -572,12 +572,12 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T1.1
 
-- [ ] Create `app/Enums/AnnouncementScope.php`: `PUBLIC`, `INTERNAL`
-- [ ] Migration columns: `id`, `title` (string), `body` (longText), `scope` (string), `published_at` (nullable datetime), `author_id` (FK → users.id), `timestamps`
-- [ ] Model: `belongsTo(User, 'author_id')`, cast `scope` to `AnnouncementScope`, cast `published_at` to `datetime`
-- [ ] Scope `published()`: `whereNotNull('published_at')->where('published_at', '<=', now())`
-- [ ] Factory with both scopes
-- [ ] Unit test: `published()` scope returns only published announcements
+- [x] Create `app/Enums/AnnouncementScope.php`: `PUBLIC`, `INTERNAL`
+- [x] Migration columns: `id`, `title` (string), `body` (longText), `scope` (string), `published_at` (nullable datetime), `author_id` (FK → users.id), `timestamps`
+- [x] Model: `belongsTo(User, 'author_id')`, cast `scope` to `AnnouncementScope`, cast `published_at` to `datetime`
+- [x] Scope `published()`: `whereNotNull('published_at')->where('published_at', '<=', now())`
+- [x] Factory with both scopes
+- [x] Unit test: `published()` scope returns only published announcements
 
 **DoD:**
 - Migration runs clean
@@ -598,13 +598,13 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T5.1
 
-- [ ] RESTful routes under `/announcement`
-- [ ] Gate: only `administrator`, `headmaster`, `owner` can create/edit/delete
-- [ ] Validation: `title` required max 255, `body` required, `scope` must be valid `AnnouncementScope` value, `published_at` nullable valid datetime
-- [ ] Author auto-assigned as `author_id` on store
-- [ ] "Publish Now" button on edit page sets `published_at = now()` if null
-- [ ] Flash notifications and i18n keys
-- [ ] Feature test: store, update, destroy, publish action, unauthorized access
+- [x] RESTful routes under `/announcement`
+- [x] Gate: only `administrator`, `headmaster`, `owner` can create/edit/delete
+- [x] Validation: `title` required max 255, `body` required, `scope` must be valid `AnnouncementScope` value, `published_at` nullable valid datetime
+- [x] Author auto-assigned as `author_id` on store
+- [x] "Publish Now" button on edit page sets `published_at = now()` if null
+- [x] Flash notifications and i18n keys
+- [x] Feature test: store, update, destroy, publish action, unauthorized access
 
 **DoD:**
 - Admin can draft (no `published_at`) and then publish an announcement
@@ -624,10 +624,10 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T5.2
 
-- [ ] `welcome()` action queries `Announcement::published()->where('scope', AnnouncementScope::PUBLIC)->latest('published_at')->take(10)->get()`
-- [ ] Welcome page displays announcement titles and truncated body with "Read more" toggle or link
-- [ ] Unauthenticated user can see public announcements
-- [ ] Feature test: public announcement appears on welcome page; internal announcement does not
+- [x] `welcome()` action queries `Announcement::published()->where('scope', AnnouncementScope::PUBLIC)->latest('published_at')->take(10)->get()`
+- [x] Welcome page displays announcement titles and truncated body with "Read more" toggle or link
+- [x] Unauthenticated user can see public announcements
+- [x] Feature test: public announcement appears on welcome page; internal announcement does not
 
 **DoD:**
 - Welcome page shows up to 10 latest public announcements
@@ -647,10 +647,10 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T5.2
 
-- [ ] Dashboard shows 5 most recent published announcements (all scopes)
-- [ ] "View all" link to `/announcement` index for all authenticated users
-- [ ] All authenticated roles can read announcements; only admin/headmaster/owner can manage
-- [ ] Feature test: authenticated user sees internal announcement on dashboard
+- [x] Dashboard shows 5 most recent published announcements (all scopes)
+- [x] "View all" link to `/announcement` index for all authenticated users
+- [x] All authenticated roles can read announcements; only admin/headmaster/owner can manage
+- [x] Feature test: authenticated user sees internal announcement on dashboard
 
 **DoD:**
 - Internal announcements visible only to logged-in users
@@ -1046,7 +1046,7 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 | Phase 2 — Attendance | T2.1, T2.2, T2.3, T2.4, T2.5 | Done |
 | Phase 3 — Learning Progress | T3.1, T3.2, T3.3, T3.4, T3.5 | Done |
 | Phase 4 — Financial Management | T4.1, T4.2, T4.3, T4.4, T4.5, T4.6, T4.7 | Done |
-| Phase 5 — Announcements | T5.1, T5.2, T5.3, T5.4 | Pending |
+| Phase 5 — Announcements | T5.1, T5.2, T5.3, T5.4 | Done |
 | Phase 6 — Notifications | T6.1, T6.2, T6.3, T6.4, T6.5 | Pending |
 | Phase 7 — Inventory | T7.1, T7.2, T7.3 | Pending |
 | Phase 8 — Reporting & Analytics | T8.1, T8.2, T8.3, T8.4 | Pending |

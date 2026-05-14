@@ -32,4 +32,5 @@ return [
     'payment' => 'Pembayaran',
     'child_payment' => 'Pembayaran Anak',
     'honorarium' => 'Honorarium',
+    'announcement' => 'Pengumuman',
 ];

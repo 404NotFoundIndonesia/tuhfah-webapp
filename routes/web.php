@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\HonorariumController;
@@ -87,6 +88,17 @@ Route::middleware(['locale'])->group(function () {
         // Payment gateway checkout (guardian only)
         Route::post('/payment/{payment}/checkout', [PaymentGatewayController::class, 'checkout'])->name('payment.checkout');
 
+        // Announcements — explicit so /create resolves before {announcement}
+        Route::prefix('announcement')->name('announcement.')->group(function () {
+            Route::get('/', [AnnouncementController::class, 'index'])->name('index');
+            Route::get('/create', [AnnouncementController::class, 'create'])->name('create');
+            Route::post('/', [AnnouncementController::class, 'store'])->name('store');
+            Route::get('/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('edit');
+            Route::put('/{announcement}', [AnnouncementController::class, 'update'])->name('update');
+            Route::patch('/{announcement}/publish', [AnnouncementController::class, 'publish'])->name('publish');
+            Route::delete('/{announcement}', [AnnouncementController::class, 'destroy'])->name('destroy');
+        });
+
         Route::as('account.')->group(function () {
             Route::get('/account/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/account/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -95,6 +107,9 @@ Route::middleware(['locale'])->group(function () {
             Route::get('/account/change-language', [PageController::class, 'locale'])->name('locale');
         });
     });
+
+    // Announcement show — public, guests can view published public announcements
+    Route::get('/announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
 
     // Payment webhook — public, no auth (Midtrans calls it server-side)
     Route::post('/payment/webhook', [PaymentGatewayController::class, 'webhook'])->name('payment.webhook');
