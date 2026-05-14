@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
@@ -26,6 +27,20 @@ Route::middleware(['locale'])->group(function () {
         Route::resource('student-guardian', StudentGuardianController::class);
 
         Route::resource('student', StudentController::class);
+
+        // Attendance — explicit routes so /attendance/self and /attendance/summary
+        // are resolved before the {attendance} wildcard
+        Route::prefix('attendance')->name('attendance.')->group(function () {
+            Route::get('/', [AttendanceController::class, 'index'])->name('index');
+            Route::get('/create', [AttendanceController::class, 'create'])->name('create');
+            Route::post('/', [AttendanceController::class, 'store'])->name('store');
+            Route::get('/self', [AttendanceController::class, 'selfCreate'])->name('self');
+            Route::post('/self', [AttendanceController::class, 'selfStore'])->name('self.store');
+            Route::get('/summary', [AttendanceController::class, 'summary'])->name('summary');
+            Route::get('/{attendance}', [AttendanceController::class, 'show'])->name('show');
+        });
+
+        Route::get('/my-child/attendance', [AttendanceController::class, 'guardianIndex'])->name('attendance.guardian');
 
         Route::as('account.')->group(function () {
             Route::get('/account/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -48,4 +48,23 @@ return [
     'expelled' => 'Dikeluarkan',
     'quit' => 'Berhenti',
     'on_leave' => 'Cuti',
+    // Attendance statuses
+    'present' => 'Hadir',
+    'absent' => 'Tidak Hadir',
+    'sick' => 'Sakit',
+    'permitted' => 'Izin',
+    // Attendance UI
+    'record_attendance' => 'Catat Kehadiran',
+    'attendance_for_date' => 'Kehadiran Tanggal :date',
+    'no_active_students' => 'Tidak ada santri aktif ditemukan.',
+    'attendance_already_submitted' => 'Kehadiran untuk tanggal ini sudah dicatat.',
+    'my_attendance_history' => 'Riwayat Kehadiran Saya',
+    'child_attendance_history' => 'Riwayat Kehadiran Anak',
+    'no_attendance_records' => 'Tidak ada catatan kehadiran.',
+    'summary' => 'Ringkasan',
+    'total_days' => 'Total Hari',
+    'verify_email' => 'Verifikasi Email',
+    'verify_email_description' => 'Silakan verifikasi alamat email Anda sebelum melanjutkan.',
+    'confirm_password' => 'Konfirmasi Password',
+    'confirm_password_description' => 'Ini adalah area aman aplikasi. Silakan konfirmasi password Anda sebelum melanjutkan.',
 ];

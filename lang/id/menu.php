@@ -23,4 +23,7 @@ return [
     'student_guardian' => 'Wali Santri',
     'student' => 'Santri',
     'academic' => 'Akademik',
+    'attendance' => 'Kehadiran',
+    'self_attendance' => 'Kehadiran Saya',
+    'child_attendance' => 'Kehadiran Anak',
 ];

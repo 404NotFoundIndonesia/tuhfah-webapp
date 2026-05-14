@@ -23,4 +23,7 @@ return [
     'student_guardian' => 'Student Guardian',
     'student' => 'Student',
     'academic' => 'Academic',
+    'attendance' => 'Attendance',
+    'self_attendance' => 'My Attendance',
+    'child_attendance' => 'Child Attendance',
 ];

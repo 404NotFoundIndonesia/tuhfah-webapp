@@ -31,4 +31,11 @@ return [
     'admission_date' => 'Tanggal Masuk',
     'departure_date' => 'Tanggal Keluar',
     'student_guardian_id' => 'Wali Santri',
+    // Attendance
+    'date' => 'Tanggal',
+    'notes' => 'Catatan',
+    'recorded_by' => 'Dicatat Oleh',
+    'month' => 'Bulan',
+    'year' => 'Tahun',
+    'student_id' => 'Santri',
 ];

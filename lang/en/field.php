@@ -31,4 +31,11 @@ return [
     'admission_date' => 'Admission Date',
     'departure_date' => 'Departure Date',
     'student_guardian_id' => 'Student Guardian',
+    // Attendance
+    'date' => 'Date',
+    'notes' => 'Notes',
+    'recorded_by' => 'Recorded By',
+    'month' => 'Month',
+    'year' => 'Year',
+    'student_id' => 'Student',
 ];

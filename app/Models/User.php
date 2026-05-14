@@ -6,6 +6,7 @@ use App\Enum\Role;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -80,6 +81,11 @@ class User extends Authenticatable
                 return asset('404_Black.jpg');
             }
         );
+    }
+
+    public function attendances(): MorphMany
+    {
+        return $this->morphMany(Attendance::class, 'attendable');
     }
 
     public function isRole(Role $role): bool

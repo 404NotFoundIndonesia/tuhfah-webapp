@@ -48,4 +48,23 @@ return [
     'expelled' => 'Expelled',
     'quit' => 'Quit',
     'on_leave' => 'On Leave',
+    // Attendance statuses
+    'present' => 'Present',
+    'absent' => 'Absent',
+    'sick' => 'Sick',
+    'permitted' => 'Permitted',
+    // Attendance UI
+    'record_attendance' => 'Record Attendance',
+    'attendance_for_date' => 'Attendance for :date',
+    'no_active_students' => 'No active students found.',
+    'attendance_already_submitted' => 'Attendance for this date has already been submitted.',
+    'my_attendance_history' => 'My Attendance History',
+    'child_attendance_history' => 'Child Attendance History',
+    'no_attendance_records' => 'No attendance records found.',
+    'summary' => 'Summary',
+    'total_days' => 'Total Days',
+    'verify_email' => 'Verify Email',
+    'verify_email_description' => 'Please verify your email address before continuing.',
+    'confirm_password' => 'Confirm Password',
+    'confirm_password_description' => 'This is a secure area of the application. Please confirm your password before continuing.',
 ];

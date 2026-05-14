@@ -116,13 +116,13 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T1.1, T1.2
 
-- [ ] Create `AttendanceStatus` enum: `PRESENT`, `ABSENT`, `SICK`, `PERMITTED`
-- [ ] Create migration with columns: `id`, `attendable_type`, `attendable_id` (morphs), `date` (date), `status` (enum/string), `notes` (nullable text), `recorded_by` (FK → users.id), `timestamps`
-- [ ] Create `Attendance` model with `morphTo()` relation `attendable`, `belongsTo(User)` for `recordedBy`, fillable fields, and `$casts` for `status` → `AttendanceStatus` and `date` → `date`
-- [ ] Add `morphMany(Attendance)` to `Student` model
-- [ ] Add `morphMany(Attendance)` to `User` model (for teacher self-attendance)
-- [ ] Create `AttendanceFactory` covering both student and teacher morphs
-- [ ] Run migration without errors
+- [x] Create `AttendanceStatus` enum: `PRESENT`, `ABSENT`, `SICK`, `PERMITTED`
+- [x] Create migration with columns: `id`, `attendable_type`, `attendable_id` (morphs), `date` (date), `status` (enum/string), `notes` (nullable text), `recorded_by` (FK → users.id), `timestamps`
+- [x] Create `Attendance` model with `morphTo()` relation `attendable`, `belongsTo(User)` for `recordedBy`, fillable fields, and `$casts` for `status` → `AttendanceStatus` and `date` → `date`
+- [x] Add `morphMany(Attendance)` to `Student` model
+- [x] Add `morphMany(Attendance)` to `User` model (for teacher self-attendance)
+- [x] Create `AttendanceFactory` covering both student and teacher morphs
+- [x] Run migration without errors
 
 **DoD:**
 - Migration runs clean via `php artisan migrate:fresh`
@@ -145,15 +145,15 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T2.1
 
-- [ ] Route `GET /attendance` → list attendance records (server-side DataTable, filterable by date and status)
-- [ ] Route `GET /attendance/create` → show bulk attendance form for a selected date
-- [ ] Route `POST /attendance` → store bulk attendance records
-- [ ] Route `GET /attendance/{attendance}` → show single record detail
-- [ ] `StoreAttendanceRequest`: validate `date` is a valid date, `records` is array, each entry has valid `attendable_id` and `status`
-- [ ] Controller: only active students shown on create form; if attendance for date already exists, pre-fill the form
-- [ ] Gate: only `administrator` and `teacher` roles can access create/store; all authorized roles can view index
-- [ ] Add i18n keys to `lang/id` and `lang/en` for all new UI strings
-- [ ] Flash success/error notification after store
+- [x] Route `GET /attendance` → list attendance records (server-side DataTable, filterable by date and status)
+- [x] Route `GET /attendance/create` → show bulk attendance form for a selected date
+- [x] Route `POST /attendance` → store bulk attendance records
+- [x] Route `GET /attendance/{attendance}` → show single record detail
+- [x] `StoreAttendanceRequest`: validate `date` is a valid date, `records` is array, each entry has valid `attendable_id` and `status`
+- [x] Controller: only active students shown on create form; if attendance for date already exists, pre-fill the form
+- [x] Gate: only `administrator` and `teacher` roles can access create/store; all authorized roles can view index
+- [x] Add i18n keys to `lang/id` and `lang/en` for all new UI strings
+- [x] Flash success/error notification after store
 
 **DoD:**
 - Admin and Teacher can access `/attendance/create`, select a date, mark all students, and submit
@@ -175,11 +175,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T2.2
 
-- [ ] Route `GET /attendance/self` → show self-attendance form for teacher
-- [ ] Route `POST /attendance/self` → store teacher's own attendance record (morph to User)
-- [ ] Gate: only `teacher` role can access self-attendance routes
-- [ ] Form shows today's date pre-filled; teacher selects status and optional notes
-- [ ] Cannot submit duplicate self-attendance for the same date
+- [x] Route `GET /attendance/self` → show self-attendance form for teacher
+- [x] Route `POST /attendance/self` → store teacher's own attendance record (morph to User)
+- [x] Gate: only `teacher` role can access self-attendance routes
+- [x] Form shows today's date pre-filled; teacher selects status and optional notes
+- [x] Cannot submit duplicate self-attendance for the same date
 
 **DoD:**
 - Teacher can submit self-attendance; second submission on same date shows validation error
@@ -200,10 +200,10 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T2.2
 
-- [ ] Route `GET /my-child/attendance` → accessible only by `student_guardian` role
-- [ ] Controller fetches attendance records for the guardian's linked student only
-- [ ] View shows attendance list with date, status badge, and notes; filterable by month/year
-- [ ] Gate: guardian cannot see attendance for students other than their own child
+- [x] Route `GET /my-child/attendance` → accessible only by `student_guardian` role
+- [x] Controller fetches attendance records for the guardian's linked student only
+- [x] View shows attendance list with date, status badge, and notes; filterable by month/year
+- [x] Gate: guardian cannot see attendance for students other than their own child
 
 **DoD:**
 - Guardian sees only their own child's records
@@ -224,10 +224,10 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T2.2
 
-- [ ] `AttendanceService::monthlySummary()` returns array with keys `present`, `absent`, `sick`, `permitted`, `total_days`
-- [ ] Route `GET /attendance/summary?student_id=&year=&month=` → returns summary (accessible by admin, headmaster, teacher, guardian-for-own-child)
-- [ ] Unit test: `AttendanceService::monthlySummary()` with known fixture data returns correct counts
-- [ ] Feature test: endpoint returns correct JSON shape
+- [x] `AttendanceService::monthlySummary()` returns array with keys `present`, `absent`, `sick`, `permitted`, `total_days`
+- [x] Route `GET /attendance/summary?student_id=&year=&month=` → returns summary (accessible by admin, headmaster, teacher, guardian-for-own-child)
+- [x] Unit test: `AttendanceService::monthlySummary()` with known fixture data returns correct counts
+- [x] Feature test: endpoint returns correct JSON shape
 
 **DoD:**
 - Service method has 100% unit test coverage for normal and edge cases (no attendance records for month, all statuses present)
