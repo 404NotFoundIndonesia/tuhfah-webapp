@@ -31,6 +31,11 @@ return [
     'admission_date' => 'Admission Date',
     'departure_date' => 'Departure Date',
     'student_guardian_id' => 'Student Guardian',
+    // Learning Progress
+    'subject' => 'Subject',
+    'milestone' => 'Milestone / Achievement',
+    'score' => 'Score',
+    'teacher_id' => 'Teacher',
     // Attendance
     'date' => 'Date',
     'notes' => 'Notes',

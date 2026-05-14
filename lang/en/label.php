@@ -48,6 +48,11 @@ return [
     'expelled' => 'Expelled',
     'quit' => 'Quit',
     'on_leave' => 'On Leave',
+    // Learning Progress
+    'no_progress_records' => 'No progress records found.',
+    'progress_chart' => 'Progress Chart',
+    'select_subject' => 'Select Subject',
+    'all_subjects' => 'All Subjects',
     // Attendance statuses
     'present' => 'Present',
     'absent' => 'Absent',

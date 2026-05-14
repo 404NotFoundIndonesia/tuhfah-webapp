@@ -254,11 +254,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T1.2
 
-- [ ] Migration columns: `id`, `student_id` (FK → students.id), `teacher_id` (FK → users.id), `date` (date), `subject` (string), `milestone` (string), `score` (nullable float), `notes` (nullable text), `timestamps`
-- [ ] Model: `belongsTo(Student)`, `belongsTo(User, 'teacher_id')`, fillable, cast `date` to `date`
-- [ ] Add `hasMany(LearningProgress)` to `Student` model
-- [ ] Create `LearningProgressFactory`
-- [ ] Unit test: model relations resolve correctly
+- [x] Migration columns: `id`, `student_id` (FK → students.id), `teacher_id` (FK → users.id), `date` (date), `subject` (string), `milestone` (string), `score` (nullable float), `notes` (nullable text), `timestamps`
+- [x] Model: `belongsTo(Student)`, `belongsTo(User, 'teacher_id')`, fillable, cast `date` to `date`
+- [x] Add `hasMany(LearningProgress)` to `Student` model
+- [x] Create `LearningProgressFactory`
+- [x] Unit test: model relations resolve correctly
 
 **DoD:**
 - Migration runs clean
@@ -280,12 +280,12 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T3.1
 
-- [ ] RESTful routes under `/learning-progress` (index, create, store, show, edit, update, destroy)
-- [ ] Gate: `teacher` can create/edit/delete records for students; cannot edit other teachers' records
-- [ ] `StoreLearningProgressRequest`: validate `student_id` exists and is active, `date` is valid, `subject` and `milestone` are required strings
-- [ ] Teacher auto-assigned as `teacher_id` on store (not user-selectable)
-- [ ] Flash notifications on create/update/delete
-- [ ] Add i18n keys
+- [x] RESTful routes under `/learning-progress` (index, create, store, show, edit, update, destroy)
+- [x] Gate: `teacher` can create/edit/delete records for students; cannot edit other teachers' records
+- [x] `StoreLearningProgressRequest`: validate `student_id` exists and is active, `date` is valid, `subject` and `milestone` are required strings
+- [x] Teacher auto-assigned as `teacher_id` on store (not user-selectable)
+- [x] Flash notifications on create/update/delete
+- [x] Add i18n keys
 
 **DoD:**
 - Teacher can create a progress record and it saves with correct `teacher_id`
@@ -306,10 +306,10 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T3.2
 
-- [ ] Route `GET /learning-progress` for admin/headmaster shows all records with filters
-- [ ] Server-side DataTable with filters: student, teacher, subject, date range
-- [ ] Gate: teacher sees only own records on same route; admin/headmaster sees all
-- [ ] Feature test: admin sees all records; teacher sees only own
+- [x] Route `GET /learning-progress` for admin/headmaster shows all records with filters
+- [x] Server-side DataTable with filters: student, teacher, subject, date range
+- [x] Gate: teacher sees only own records on same route; admin/headmaster sees all
+- [x] Feature test: admin sees all records; teacher sees only own
 
 **DoD:**
 - Admin can filter and view all progress records across all students
@@ -329,9 +329,9 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T3.2
 
-- [ ] Route `GET /my-child/progress` → guardian only
-- [ ] Shows paginated progress records for linked student
-- [ ] Guardian cannot access another student's progress
+- [x] Route `GET /my-child/progress` → guardian only
+- [x] Shows paginated progress records for linked student
+- [x] Guardian cannot access another student's progress
 
 **DoD:**
 - Guardian sees only their child's records
@@ -351,9 +351,9 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T3.3, T3.4
 
-- [ ] Route `GET /learning-progress/chart-data?student_id=&subject=` returns JSON array of `{date, score}`
-- [ ] ApexCharts line chart rendered in student progress page
-- [ ] Feature test: chart data endpoint returns correct JSON shape and respects authorization
+- [x] Route `GET /learning-progress/chart-data?student_id=&subject=` returns JSON array of `{date, score}`
+- [x] ApexCharts line chart rendered in student progress page
+- [x] Feature test: chart data endpoint returns correct JSON shape and respects authorization
 
 **DoD:**
 - Chart renders with real data for a student with multiple progress records
@@ -1043,8 +1043,8 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 | Phase | Tasks | Status |
 |-------|-------|--------|
 | Phase 1 — Foundation (Retroactive Testing) | T1.1, T1.2, T1.3 | Pending |
-| Phase 2 — Attendance | T2.1, T2.2, T2.3, T2.4, T2.5 | Pending |
-| Phase 3 — Learning Progress | T3.1, T3.2, T3.3, T3.4, T3.5 | Pending |
+| Phase 2 — Attendance | T2.1, T2.2, T2.3, T2.4, T2.5 | Done |
+| Phase 3 — Learning Progress | T3.1, T3.2, T3.3, T3.4, T3.5 | Done |
 | Phase 4 — Financial Management | T4.1, T4.2, T4.3, T4.4, T4.5, T4.6, T4.7 | Pending |
 | Phase 5 — Announcements | T5.1, T5.2, T5.3, T5.4 | Pending |
 | Phase 6 — Notifications | T6.1, T6.2, T6.3, T6.4, T6.5 | Pending |

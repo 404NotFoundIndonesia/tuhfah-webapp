@@ -48,6 +48,11 @@ return [
     'expelled' => 'Dikeluarkan',
     'quit' => 'Berhenti',
     'on_leave' => 'Cuti',
+    // Learning Progress
+    'no_progress_records' => 'Tidak ada catatan perkembangan belajar.',
+    'progress_chart' => 'Grafik Perkembangan',
+    'select_subject' => 'Pilih Mata Pelajaran',
+    'all_subjects' => 'Semua Mata Pelajaran',
     // Attendance statuses
     'present' => 'Hadir',
     'absent' => 'Tidak Hadir',

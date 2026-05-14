@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\LearningProgressController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
@@ -41,6 +42,20 @@ Route::middleware(['locale'])->group(function () {
         });
 
         Route::get('/my-child/attendance', [AttendanceController::class, 'guardianIndex'])->name('attendance.guardian');
+
+        // Learning Progress — explicit routes so /chart-data resolves before {learningProgress}
+        Route::prefix('learning-progress')->name('learning-progress.')->group(function () {
+            Route::get('/', [LearningProgressController::class, 'index'])->name('index');
+            Route::get('/create', [LearningProgressController::class, 'create'])->name('create');
+            Route::post('/', [LearningProgressController::class, 'store'])->name('store');
+            Route::get('/chart-data', [LearningProgressController::class, 'chartData'])->name('chart-data');
+            Route::get('/{learningProgress}', [LearningProgressController::class, 'show'])->name('show');
+            Route::get('/{learningProgress}/edit', [LearningProgressController::class, 'edit'])->name('edit');
+            Route::put('/{learningProgress}', [LearningProgressController::class, 'update'])->name('update');
+            Route::delete('/{learningProgress}', [LearningProgressController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::get('/my-child/progress', [LearningProgressController::class, 'guardianIndex'])->name('learning-progress.guardian');
 
         Route::as('account.')->group(function () {
             Route::get('/account/profile', [ProfileController::class, 'edit'])->name('profile.edit');

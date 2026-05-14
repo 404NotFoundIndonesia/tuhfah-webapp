@@ -31,6 +31,11 @@ return [
     'admission_date' => 'Tanggal Masuk',
     'departure_date' => 'Tanggal Keluar',
     'student_guardian_id' => 'Wali Santri',
+    // Learning Progress
+    'subject' => 'Mata Pelajaran',
+    'milestone' => 'Capaian / Pencapaian',
+    'score' => 'Nilai',
+    'teacher_id' => 'Pengajar',
     // Attendance
     'date' => 'Tanggal',
     'notes' => 'Catatan',

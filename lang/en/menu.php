@@ -26,4 +26,6 @@ return [
     'attendance' => 'Attendance',
     'self_attendance' => 'My Attendance',
     'child_attendance' => 'Child Attendance',
+    'learning_progress' => 'Learning Progress',
+    'child_progress' => 'Child Progress',
 ];
