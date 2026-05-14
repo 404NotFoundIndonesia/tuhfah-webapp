@@ -33,4 +33,5 @@ return [
     'child_payment' => 'Child Payments',
     'honorarium' => 'Honorariums',
     'announcement' => 'Announcements',
+    'notifications' => 'Notifications',
 ];

@@ -32,6 +32,9 @@ class ProfileController extends Controller
     {
         $data = $request->validated();
 
+        // Checkbox is absent from request when unchecked
+        $data['email_notifications'] = $request->boolean('email_notifications');
+
         if (array_key_exists('image', $data)) {
             unset($data['image']);
         }

@@ -23,6 +23,7 @@ class ProfileUpdateRequest extends FormRequest
             'address' => ['nullable'],
             'marital_status' => ['nullable'],
             'gender' => ['required'],
+            'email_notifications' => ['nullable', 'boolean'],
         ];
     }
 

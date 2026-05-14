@@ -105,4 +105,18 @@ return [
     'no_announcements' => 'Tidak ada pengumuman.',
     'latest_announcements' => 'Pengumuman Terbaru',
     'view_all' => 'Lihat semua',
+
+    // Notifications
+    'no_notifications' => 'Tidak ada notifikasi.',
+    'mark_read' => 'Tandai sudah dibaca',
+    'mark_all_read' => 'Tandai semua sudah dibaca',
+    'was_marked_as' => 'ditandai sebagai',
+    'on' => 'pada',
+    'recorded_by' => 'Dicatat oleh',
+    'payment_overdue_for' => 'Pembayaran terlambat untuk',
+    'new_progress_for' => 'Progres belajar baru untuk',
+    'teacher' => 'Guru',
+    'notification' => 'Notifikasi',
+    'email_notifications' => 'Notifikasi Email',
+    'receive_email_notifications' => 'Terima notifikasi email untuk absensi, pembayaran, dan pembaruan progres belajar',
 ];

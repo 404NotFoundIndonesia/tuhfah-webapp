@@ -71,6 +71,17 @@
                             <x-forms.input-select2 name="marital_status" :value="$user->marital_status"
                                                    :options="[ ['single', __('label.single')], ['married', __('label.married')], ['divorced', __('label.divorced')], ['widowed', __('label.widowed')] ]"/>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-medium">{{ __('label.email_notifications') }}</label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="email_notifications"
+                                       id="email_notifications" value="1"
+                                       {{ $user->email_notifications ? 'checked' : '' }}>
+                                <label class="form-check-label" for="email_notifications">
+                                    {{ __('label.receive_email_notifications') }}
+                                </label>
+                            </div>
+                        </div>
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary me-2">{{ __('button.submit') }}</button>
                             <button type="reset" class="btn btn-outline-secondary">{{ __('button.reset') }}</button>

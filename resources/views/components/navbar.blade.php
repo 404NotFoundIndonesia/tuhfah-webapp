@@ -22,6 +22,10 @@
                     aria-label="Star 404NotFoundIndonesia/tuhfah-webapp on GitHub">Star</a>
             </li>
 
+            <!-- Notifications -->
+            @include('components.notification-bell')
+            <!-- /Notifications -->
+
             <!-- Language -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" title="Language" href="javascript:void(0);" data-bs-toggle="dropdown">

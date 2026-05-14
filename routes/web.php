@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\HonorariumController;
@@ -97,6 +98,14 @@ Route::middleware(['locale'])->group(function () {
             Route::put('/{announcement}', [AnnouncementController::class, 'update'])->name('update');
             Route::patch('/{announcement}/publish', [AnnouncementController::class, 'publish'])->name('publish');
             Route::delete('/{announcement}', [AnnouncementController::class, 'destroy'])->name('destroy');
+        });
+
+        // Notifications
+        Route::prefix('notifications')->name('notification.')->group(function () {
+            Route::get('/', [NotificationController::class, 'index'])->name('index');
+            Route::get('/count', [NotificationController::class, 'unreadCount'])->name('count');
+            Route::patch('/read-all', [NotificationController::class, 'markAllRead'])->name('read-all');
+            Route::patch('/{id}/read', [NotificationController::class, 'markRead'])->name('read');
         });
 
         Route::as('account.')->group(function () {

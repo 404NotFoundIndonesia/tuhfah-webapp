@@ -676,14 +676,14 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T1.1
 
-- [ ] Run `php artisan notifications:table && php artisan migrate`
-- [ ] Verify `notifications` table has: `id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`
-- [ ] Add `HasNotifications` (Laravel built-in `Notifiable` trait) is already on `User` model — verify
-- [ ] Create shared notification bell component: `resources/views/components/notification-bell.blade.php` showing unread count
-- [ ] Route `GET /notifications` → list all notifications for authenticated user (paginated)
-- [ ] Route `PATCH /notifications/{id}/read` → mark single notification read
-- [ ] Route `PATCH /notifications/read-all` → mark all read
-- [ ] Feature test: unread count updates after sending notification; mark-read clears it
+- [x] Run `php artisan notifications:table && php artisan migrate`
+- [x] Verify `notifications` table has: `id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`
+- [x] Add `HasNotifications` (Laravel built-in `Notifiable` trait) is already on `User` model — verify
+- [x] Create shared notification bell component: `resources/views/components/notification-bell.blade.php` showing unread count
+- [x] Route `GET /notifications` → list all notifications for authenticated user (paginated)
+- [x] Route `PATCH /notifications/{id}/read` → mark single notification read
+- [x] Route `PATCH /notifications/read-all` → mark all read
+- [x] Feature test: unread count updates after sending notification; mark-read clears it
 
 **DoD:**
 - Notification bell renders in navbar with live unread count
@@ -702,11 +702,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T2.2, T6.1
 
-- [ ] Notification sent via `database` channel to the student's guardian user
-- [ ] Notification data: student name, date, status, recorded_by name
-- [ ] Dispatch notification in `AttendanceController@store` after successful save
-- [ ] Unit test: `StudentAbsentNotification` formats `toArray()` data correctly
-- [ ] Feature test: after submitting attendance with absent student, guardian has unread notification
+- [x] Notification sent via `database` channel to the student's guardian user
+- [x] Notification data: student name, date, status, recorded_by name
+- [x] Dispatch notification in `AttendanceController@store` after successful save
+- [x] Unit test: `StudentAbsentNotification` formats `toArray()` data correctly
+- [x] Feature test: after submitting attendance with absent student, guardian has unread notification
 
 **DoD:**
 - Guardian receives notification for absent/sick/permitted status only (not for PRESENT)
@@ -726,11 +726,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T4.5, T6.1
 
-- [ ] `PaymentOverdueNotification` sent to guardian of the student with overdue payment
-- [ ] Copy notification sent to all `administrator` role users
-- [ ] `MarkOverduePayments` command dispatches notification for each newly overdue payment
-- [ ] Unit test: notification formats correctly; command sends correct number of notifications
-- [ ] Feature test: after command runs, guardian and admins have unread notifications
+- [x] `PaymentOverdueNotification` sent to guardian of the student with overdue payment
+- [x] Copy notification sent to all `administrator` role users
+- [x] `MarkOverduePayments` command dispatches notification for each newly overdue payment
+- [x] Unit test: notification formats correctly; command sends correct number of notifications
+- [x] Feature test: after command runs, guardian and admins have unread notifications
 
 **DoD:**
 - Notifications only sent when status transitions from UNPAID → OVERDUE (not re-sent on subsequent runs)
@@ -750,10 +750,10 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T3.2, T6.1
 
-- [ ] Notification sent to student's guardian after new progress record saved
-- [ ] Notification data: student name, subject, milestone, teacher name, date
-- [ ] Unit test: notification data array has correct keys
-- [ ] Feature test: guardian receives notification after teacher creates progress record
+- [x] Notification sent to student's guardian after new progress record saved
+- [x] Notification data: student name, subject, milestone, teacher name, date
+- [x] Unit test: notification data array has correct keys
+- [x] Feature test: guardian receives notification after teacher creates progress record
 
 **DoD:**
 - Notification dispatched only on create, not on update
@@ -773,11 +773,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T6.2, T6.3, T6.4
 
-- [ ] Migration: `add_email_notifications_to_users_table` adds nullable boolean `email_notifications` (default `true`)
-- [ ] Profile page: add toggle for email notifications preference
-- [ ] Each notification class: `via()` returns `['database', 'mail']` if `$notifiable->email_notifications`, else `['database']` only
-- [ ] `toMail()` method on each notification class with proper subject and body
-- [ ] Feature test: user with email_notifications=false does not send mail; user with true sends mail (use `Mail::fake()`)
+- [x] Migration: `add_email_notifications_to_users_table` adds nullable boolean `email_notifications` (default `true`)
+- [x] Profile page: add toggle for email notifications preference
+- [x] Each notification class: `via()` returns `['database', 'mail']` if `$notifiable->email_notifications`, else `['database']` only
+- [x] `toMail()` method on each notification class with proper subject and body
+- [x] Feature test: user with email_notifications=false does not send mail; user with true sends mail (use `Mail::fake()`)
 
 **DoD:**
 - Users can opt out of email notifications from their profile
@@ -1047,7 +1047,7 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 | Phase 3 — Learning Progress | T3.1, T3.2, T3.3, T3.4, T3.5 | Done |
 | Phase 4 — Financial Management | T4.1, T4.2, T4.3, T4.4, T4.5, T4.6, T4.7 | Done |
 | Phase 5 — Announcements | T5.1, T5.2, T5.3, T5.4 | Done |
-| Phase 6 — Notifications | T6.1, T6.2, T6.3, T6.4, T6.5 | Pending |
+| Phase 6 — Notifications | T6.1, T6.2, T6.3, T6.4, T6.5 | Done |
 | Phase 7 — Inventory | T7.1, T7.2, T7.3 | Pending |
 | Phase 8 — Reporting & Analytics | T8.1, T8.2, T8.3, T8.4 | Pending |
 | Cross-Cutting | TX.1, TX.2, TX.3, TX.4 | Ongoing |

@@ -19,6 +19,7 @@ class Payment extends Model
         'due_date',
         'paid_at',
         'recorded_by',
+        'notified_at',
     ];
 
     protected function casts(): array
@@ -27,6 +28,7 @@ class Payment extends Model
             'status' => PaymentStatus::class,
             'due_date' => 'date:Y-m-d',
             'paid_at' => 'datetime',
+            'notified_at' => 'datetime',
             'amount' => 'decimal:2',
         ];
     }

@@ -31,6 +31,7 @@ class User extends Authenticatable
         'address',
         'marital_status',
         'gender',
+        'email_notifications',
     ];
 
     /**
@@ -67,6 +68,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'email_notifications' => 'boolean',
         ];
     }
 

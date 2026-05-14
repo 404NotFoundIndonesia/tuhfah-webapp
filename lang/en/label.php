@@ -105,4 +105,18 @@ return [
     'no_announcements' => 'No announcements found.',
     'latest_announcements' => 'Latest Announcements',
     'view_all' => 'View all',
+
+    // Notifications
+    'no_notifications' => 'No notifications.',
+    'mark_read' => 'Mark as read',
+    'mark_all_read' => 'Mark all as read',
+    'was_marked_as' => 'was marked as',
+    'on' => 'on',
+    'recorded_by' => 'Recorded by',
+    'payment_overdue_for' => 'Payment overdue for',
+    'new_progress_for' => 'New learning progress for',
+    'teacher' => 'Teacher',
+    'notification' => 'Notification',
+    'email_notifications' => 'Email Notifications',
+    'receive_email_notifications' => 'Receive email notifications for attendance, payments, and learning progress updates',
 ];

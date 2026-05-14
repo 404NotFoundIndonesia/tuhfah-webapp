@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateLearningProgressRequest;
 use App\Models\LearningProgress;
 use App\Models\Student;
 use App\Models\User;
+use App\Notifications\NewLearningProgressNotification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -117,7 +118,21 @@ class LearningProgressController extends Controller
         $data = $request->validated();
         $data['teacher_id'] = auth()->id();
 
-        LearningProgress::create($data);
+        $progress = LearningProgress::create($data);
+
+        $student = Student::find($progress->student_id);
+        if ($student && $student->student_guardian_id) {
+            $guardian = User::find($student->student_guardian_id);
+            if ($guardian) {
+                $guardian->notify(new NewLearningProgressNotification(
+                    studentName: $student->name,
+                    subject: $progress->subject,
+                    milestone: $progress->milestone,
+                    teacherName: auth()->user()->name,
+                    date: $progress->date->format('Y-m-d'),
+                ));
+            }
+        }
 
         return redirect()->route('learning-progress.index')
             ->with('notification', $this->successNotification('notification.success_create', 'menu.learning_progress'));

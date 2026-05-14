@@ -10,6 +10,7 @@ use App\Http\Requests\StoreSelfAttendanceRequest;
 use App\Models\Attendance;
 use App\Models\Student;
 use App\Models\User;
+use App\Notifications\StudentAbsentNotification;
 use App\Services\AttendanceService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -86,6 +87,13 @@ class AttendanceController extends Controller
 
     public function store(StoreAttendanceRequest $request): RedirectResponse
     {
+        $recorder = auth()->user();
+        $nonPresentStatuses = [
+            AttendanceStatus::ABSENT->value,
+            AttendanceStatus::SICK->value,
+            AttendanceStatus::PERMITTED->value,
+        ];
+
         foreach ($request->records as $studentId => $record) {
             Attendance::updateOrCreate(
                 [
@@ -96,9 +104,24 @@ class AttendanceController extends Controller
                 [
                     'status' => $record['status'],
                     'notes' => $record['notes'] ?? null,
-                    'recorded_by' => auth()->id(),
+                    'recorded_by' => $recorder->id,
                 ]
             );
+
+            if (in_array($record['status'], $nonPresentStatuses)) {
+                $student = Student::find((int) $studentId);
+                if ($student && $student->student_guardian_id) {
+                    $guardian = User::find($student->student_guardian_id);
+                    if ($guardian) {
+                        $guardian->notify(new StudentAbsentNotification(
+                            studentName: $student->name,
+                            date: $request->date,
+                            status: $record['status'],
+                            recordedBy: $recorder->name,
+                        ));
+                    }
+                }
+            }
         }
 
         return redirect()->route('attendance.index')
