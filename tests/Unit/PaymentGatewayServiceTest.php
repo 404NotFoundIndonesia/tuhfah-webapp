@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Enum\PaymentStatus;
 use App\Models\Payment;
 use App\Models\Student;
 use App\Services\PaymentGatewayService;

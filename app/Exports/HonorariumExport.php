@@ -9,7 +9,9 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 class HonorariumExport implements FromQuery, WithHeadings, WithMapping
 {
-    public function __construct(private readonly ?string $period = null) {}
+    public function __construct(private readonly ?string $period = null)
+    {
+    }
 
     public function query()
     {

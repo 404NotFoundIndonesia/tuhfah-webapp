@@ -153,6 +153,7 @@ class NotificationTest extends TestCase
             StudentAbsentNotification::class,
             function (StudentAbsentNotification $notification) use ($student, $admin) {
                 $data = $notification->toArray($student);
+
                 return $data['student_name'] === $student->name
                     && $data['date'] === '2026-05-14'
                     && $data['status'] === AttendanceStatus::ABSENT->value

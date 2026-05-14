@@ -20,7 +20,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class AttendanceController extends Controller
 {
-    public function __construct(private AttendanceService $service) {}
+    public function __construct(private AttendanceService $service)
+    {
+    }
 
     private function authorizeAdmin(): void
     {

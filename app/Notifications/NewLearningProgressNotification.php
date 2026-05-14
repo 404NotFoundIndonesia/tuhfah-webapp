@@ -16,7 +16,8 @@ class NewLearningProgressNotification extends Notification
         private readonly string $milestone,
         private readonly string $teacherName,
         private readonly string $date,
-    ) {}
+    ) {
+    }
 
     public function via(object $notifiable): array
     {

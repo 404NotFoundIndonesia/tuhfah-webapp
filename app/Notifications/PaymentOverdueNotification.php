@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\Models\Payment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -16,7 +15,8 @@ class PaymentOverdueNotification extends Notification
         private readonly string $period,
         private readonly string $amount,
         private readonly string $dueDate,
-    ) {}
+    ) {
+    }
 
     public function via(object $notifiable): array
     {

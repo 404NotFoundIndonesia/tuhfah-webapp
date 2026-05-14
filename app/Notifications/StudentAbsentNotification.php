@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\Models\Attendance;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -16,7 +15,8 @@ class StudentAbsentNotification extends Notification
         private readonly string $date,
         private readonly string $status,
         private readonly string $recordedBy,
-    ) {}
+    ) {
+    }
 
     public function via(object $notifiable): array
     {

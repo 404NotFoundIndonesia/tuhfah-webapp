@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Enum\AttendanceStatus;
 use App\Models\Attendance;
 use App\Models\Student;
 

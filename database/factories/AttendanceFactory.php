@@ -25,7 +25,7 @@ class AttendanceFactory extends Factory
         ];
     }
 
-    public function forStudent(Student $student = null): static
+    public function forStudent(?Student $student = null): static
     {
         return $this->state(fn () => [
             'attendable_type' => Student::class,
@@ -33,7 +33,7 @@ class AttendanceFactory extends Factory
         ]);
     }
 
-    public function forTeacher(User $teacher = null): static
+    public function forTeacher(?User $teacher = null): static
     {
         return $this->state(fn () => [
             'attendable_type' => User::class,

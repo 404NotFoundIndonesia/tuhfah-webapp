@@ -7,13 +7,14 @@ use App\Enum\Role;
 use App\Models\Payment;
 use App\Services\PaymentGatewayService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PaymentGatewayController extends Controller
 {
-    public function __construct(private readonly PaymentGatewayService $gateway) {}
+    public function __construct(private readonly PaymentGatewayService $gateway)
+    {
+    }
 
     public function checkout(Payment $payment): JsonResponse
     {

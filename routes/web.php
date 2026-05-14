@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\HonorariumController;
 use App\Http\Controllers\LearningProgressController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentGatewayController;
