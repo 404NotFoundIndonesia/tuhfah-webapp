@@ -43,4 +43,10 @@ return [
     'month' => 'Bulan',
     'year' => 'Tahun',
     'student_id' => 'Santri',
+    // Payment & Honorarium
+    'period' => 'Periode',
+    'amount' => 'Jumlah',
+    'due_date' => 'Tanggal Jatuh Tempo',
+    'paid_at' => 'Dibayar Pada',
+    'status' => 'Status',
 ];

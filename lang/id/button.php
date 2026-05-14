@@ -11,5 +11,8 @@ return [
     'register' => 'Buat Akun',
     'delete_permanently' => 'Hapus Akun Permanen',
     'upload' => 'Unggah',
+    'mark_paid' => 'Tandai Lunas',
+    'export_xlsx' => 'Ekspor Excel',
+    'export_pdf' => 'Ekspor PDF',
 
 ];

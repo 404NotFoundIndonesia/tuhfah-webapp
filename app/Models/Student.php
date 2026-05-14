@@ -46,6 +46,11 @@ class Student extends Model
         return $this->hasMany(LearningProgress::class);
     }
 
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     protected static function boot(): void
     {
         parent::boot();

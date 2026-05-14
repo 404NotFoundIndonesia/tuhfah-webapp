@@ -11,5 +11,8 @@ return [
     'register' => 'Sign Up',
     'delete_permanently' => 'Delete My Account',
     'upload' => 'Upload',
+    'mark_paid' => 'Mark as Paid',
+    'export_xlsx' => 'Export Excel',
+    'export_pdf' => 'Export PDF',
 
 ];

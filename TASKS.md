@@ -381,11 +381,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T1.2
 
-- [ ] `PaymentStatus` enum: `UNPAID`, `PAID`, `OVERDUE`
-- [ ] Migration columns: `id`, `student_id` (FK → students.id), `period` (string, e.g. "2025-01"), `amount` (decimal 10,2), `status` (string), `due_date` (date), `paid_at` (nullable datetime), `recorded_by` (FK → users.id), `timestamps`
-- [ ] Model: `belongsTo(Student)`, `belongsTo(User, 'recorded_by')`, cast `status` to `PaymentStatus`, cast `due_date` to `date`, cast `paid_at` to `datetime`
-- [ ] Add `hasMany(Payment)` to `Student` model
-- [ ] Unit test: `PaymentStatus` enum labels correct; Payment model casts work
+- [x] `PaymentStatus` enum: `UNPAID`, `PAID`, `OVERDUE`
+- [x] Migration columns: `id`, `student_id` (FK → students.id), `period` (string, e.g. "2025-01"), `amount` (decimal 10,2), `status` (string), `due_date` (date), `paid_at` (nullable datetime), `recorded_by` (FK → users.id), `timestamps`
+- [x] Model: `belongsTo(Student)`, `belongsTo(User, 'recorded_by')`, cast `status` to `PaymentStatus`, cast `due_date` to `date`, cast `paid_at` to `datetime`
+- [x] Add `hasMany(Payment)` to `Student` model
+- [x] Unit test: `PaymentStatus` enum labels correct; Payment model casts work
 
 **DoD:**
 - Migration runs clean
@@ -405,13 +405,13 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T4.1
 
-- [ ] Routes: `GET /payment` (index), `GET /payment/create`, `POST /payment`, `GET /payment/{payment}`, `PATCH /payment/{payment}` (mark paid), `DELETE /payment/{payment}`
-- [ ] Gate: only `administrator`, `headmaster`, `owner` can manage payments
-- [ ] Index shows all payments with filters: student, period, status
-- [ ] Store validates: `student_id` is active student, `period` format is `YYYY-MM`, `amount` > 0, `due_date` is valid date
-- [ ] Mark-paid action sets `status = PAID`, `paid_at = now()`, `recorded_by = auth()->id()`
-- [ ] Flash notifications and i18n keys
-- [ ] Feature test: store payment, mark paid, unauthorized role gets 403
+- [x] Routes: `GET /payment` (index), `GET /payment/create`, `POST /payment`, `GET /payment/{payment}`, `PATCH /payment/{payment}` (mark paid), `DELETE /payment/{payment}`
+- [x] Gate: only `administrator`, `headmaster`, `owner` can manage payments
+- [x] Index shows all payments with filters: student, period, status
+- [x] Store validates: `student_id` is active student, `period` format is `YYYY-MM`, `amount` > 0, `due_date` is valid date
+- [x] Mark-paid action sets `status = PAID`, `paid_at = now()`, `recorded_by = auth()->id()`
+- [x] Flash notifications and i18n keys
+- [x] Feature test: store payment, mark paid, unauthorized role gets 403
 
 **DoD:**
 - Admin can create a payment record and mark it paid
@@ -435,12 +435,12 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T4.1
 
-- [ ] Migration columns: `id`, `teacher_id` (FK → users.id), `period` (string), `amount` (decimal 10,2), `status` (string), `paid_at` (nullable datetime), `recorded_by` (FK → users.id), `timestamps`
-- [ ] Model: `belongsTo(User, 'teacher_id')`, `belongsTo(User, 'recorded_by')`, casts for status and dates
-- [ ] RESTful routes under `/honorarium`
-- [ ] Gate: `administrator`, `headmaster`, `owner` only
-- [ ] Same store/mark-paid pattern as PaymentController
-- [ ] Feature test: create honorarium, mark paid, authorization
+- [x] Migration columns: `id`, `teacher_id` (FK → users.id), `period` (string), `amount` (decimal 10,2), `status` (string), `paid_at` (nullable datetime), `recorded_by` (FK → users.id), `timestamps`
+- [x] Model: `belongsTo(User, 'teacher_id')`, `belongsTo(User, 'recorded_by')`, casts for status and dates
+- [x] RESTful routes under `/honorarium`
+- [x] Gate: `administrator`, `headmaster`, `owner` only
+- [x] Same store/mark-paid pattern as PaymentController
+- [x] Feature test: create honorarium, mark paid, authorization
 
 **DoD:**
 - Admin can create and mark honorarium paid
@@ -460,11 +460,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T4.2
 
-- [ ] Route `GET /my-child/payments` → guardian only
-- [ ] Shows all payment records for linked student with status badges
-- [ ] Outstanding (UNPAID or OVERDUE) payments highlighted
-- [ ] Guardian cannot access payment records for other students (403)
-- [ ] Feature test: guardian sees only child's payments
+- [x] Route `GET /my-child/payments` → guardian only
+- [x] Shows all payment records for linked student with status badges
+- [x] Outstanding (UNPAID or OVERDUE) payments highlighted
+- [x] Guardian cannot access payment records for other students (403)
+- [x] Feature test: guardian sees only child's payments
 
 **DoD:**
 - Guardian view correctly scoped to linked student
@@ -484,10 +484,10 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T4.2
 
-- [ ] Command `payments:mark-overdue` queries payments where `due_date < today` and `status = UNPAID`, updates status to `OVERDUE`
-- [ ] Command scheduled to run daily via `->daily()`
-- [ ] Unit test: command with fixture data correctly marks overdue payments and skips paid ones
-- [ ] Feature test: after running command, overdue payments have correct status
+- [x] Command `payments:mark-overdue` queries payments where `due_date < today` and `status = UNPAID`, updates status to `OVERDUE`
+- [x] Command scheduled to run daily via `->daily()`
+- [x] Unit test: command with fixture data correctly marks overdue payments and skips paid ones
+- [x] Feature test: after running command, overdue payments have correct status
 
 **DoD:**
 - Command changes only UNPAID + past-due-date records to OVERDUE
@@ -511,13 +511,13 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T4.4
 
-- [ ] Guardian can click "Pay Now" on an outstanding payment → redirected to gateway checkout
-- [ ] Gateway webhook endpoint `POST /payment/webhook` receives payment confirmation
-- [ ] On successful webhook: mark payment as PAID, store `paid_at`
-- [ ] Webhook endpoint validates gateway signature before processing
-- [ ] `.env.example` updated with gateway credential placeholders
-- [ ] Unit test: `PaymentGatewayService` creates correct payload structure
-- [ ] Feature test: webhook with valid signature marks payment paid; invalid signature returns 403
+- [x] Guardian can click "Pay Now" on an outstanding payment → redirected to gateway checkout
+- [x] Gateway webhook endpoint `POST /payment/webhook` receives payment confirmation
+- [x] On successful webhook: mark payment as PAID, store `paid_at`
+- [x] Webhook endpoint validates gateway signature before processing
+- [x] `.env.example` updated with gateway credential placeholders
+- [x] Unit test: `PaymentGatewayService` creates correct payload structure
+- [x] Feature test: webhook with valid signature marks payment paid; invalid signature returns 403
 
 **DoD:**
 - Webhook is idempotent (duplicate callbacks do not double-mark)
@@ -541,11 +541,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T4.2, T4.3
 
-- [ ] Route `GET /payment/export?format=xlsx&period=YYYY-MM` → downloads Excel
-- [ ] Route `GET /payment/export?format=pdf&period=YYYY-MM` → downloads PDF
-- [ ] Same routes for `/honorarium/export`
-- [ ] Gate: `administrator`, `headmaster`, `owner` only
-- [ ] Feature test: export route returns response with correct `Content-Type` header and 200 status
+- [x] Route `GET /payment/export?format=xlsx&period=YYYY-MM` → downloads Excel
+- [x] Route `GET /payment/export?format=pdf&period=YYYY-MM` → downloads PDF
+- [x] Same routes for `/honorarium/export`
+- [x] Gate: `administrator`, `headmaster`, `owner` only
+- [x] Feature test: export route returns response with correct `Content-Type` header and 200 status
 
 **DoD:**
 - Both Excel and PDF downloads work for payments and honorariums
@@ -1045,7 +1045,7 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 | Phase 1 — Foundation (Retroactive Testing) | T1.1, T1.2, T1.3 | Pending |
 | Phase 2 — Attendance | T2.1, T2.2, T2.3, T2.4, T2.5 | Done |
 | Phase 3 — Learning Progress | T3.1, T3.2, T3.3, T3.4, T3.5 | Done |
-| Phase 4 — Financial Management | T4.1, T4.2, T4.3, T4.4, T4.5, T4.6, T4.7 | Pending |
+| Phase 4 — Financial Management | T4.1, T4.2, T4.3, T4.4, T4.5, T4.6, T4.7 | Done |
 | Phase 5 — Announcements | T5.1, T5.2, T5.3, T5.4 | Pending |
 | Phase 6 — Notifications | T6.1, T6.2, T6.3, T6.4, T6.5 | Pending |
 | Phase 7 — Inventory | T7.1, T7.2, T7.3 | Pending |

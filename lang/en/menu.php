@@ -28,4 +28,8 @@ return [
     'child_attendance' => 'Child Attendance',
     'learning_progress' => 'Learning Progress',
     'child_progress' => 'Child Progress',
+    'finance' => 'Finance',
+    'payment' => 'Payments',
+    'child_payment' => 'Child Payments',
+    'honorarium' => 'Honorariums',
 ];

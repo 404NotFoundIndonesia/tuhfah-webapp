@@ -43,4 +43,10 @@ return [
     'month' => 'Month',
     'year' => 'Year',
     'student_id' => 'Student',
+    // Payment & Honorarium
+    'period' => 'Period',
+    'amount' => 'Amount',
+    'due_date' => 'Due Date',
+    'paid_at' => 'Paid At',
+    'status' => 'Status',
 ];

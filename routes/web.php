@@ -3,8 +3,11 @@
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\HonorariumController;
 use App\Http\Controllers\LearningProgressController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentGatewayController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentGuardianController;
@@ -57,6 +60,33 @@ Route::middleware(['locale'])->group(function () {
 
         Route::get('/my-child/progress', [LearningProgressController::class, 'guardianIndex'])->name('learning-progress.guardian');
 
+        // Payment — explicit routes so /export, /create, /webhook resolve before {payment}
+        Route::prefix('payment')->name('payment.')->group(function () {
+            Route::get('/', [PaymentController::class, 'index'])->name('index');
+            Route::get('/create', [PaymentController::class, 'create'])->name('create');
+            Route::post('/', [PaymentController::class, 'store'])->name('store');
+            Route::get('/export', [PaymentController::class, 'export'])->name('export');
+            Route::get('/{payment}', [PaymentController::class, 'show'])->name('show');
+            Route::patch('/{payment}/mark-paid', [PaymentController::class, 'markPaid'])->name('mark-paid');
+            Route::delete('/{payment}', [PaymentController::class, 'destroy'])->name('destroy');
+        });
+
+        Route::get('/my-child/payments', [PaymentController::class, 'guardianIndex'])->name('payment.guardian');
+
+        // Honorarium
+        Route::prefix('honorarium')->name('honorarium.')->group(function () {
+            Route::get('/', [HonorariumController::class, 'index'])->name('index');
+            Route::get('/create', [HonorariumController::class, 'create'])->name('create');
+            Route::post('/', [HonorariumController::class, 'store'])->name('store');
+            Route::get('/export', [HonorariumController::class, 'export'])->name('export');
+            Route::get('/{honorarium}', [HonorariumController::class, 'show'])->name('show');
+            Route::patch('/{honorarium}/mark-paid', [HonorariumController::class, 'markPaid'])->name('mark-paid');
+            Route::delete('/{honorarium}', [HonorariumController::class, 'destroy'])->name('destroy');
+        });
+
+        // Payment gateway checkout (guardian only)
+        Route::post('/payment/{payment}/checkout', [PaymentGatewayController::class, 'checkout'])->name('payment.checkout');
+
         Route::as('account.')->group(function () {
             Route::get('/account/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             Route::patch('/account/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -65,6 +95,9 @@ Route::middleware(['locale'])->group(function () {
             Route::get('/account/change-language', [PageController::class, 'locale'])->name('locale');
         });
     });
+
+    // Payment webhook — public, no auth (Midtrans calls it server-side)
+    Route::post('/payment/webhook', [PaymentGatewayController::class, 'webhook'])->name('payment.webhook');
 
     require __DIR__.'/auth.php';
 });
