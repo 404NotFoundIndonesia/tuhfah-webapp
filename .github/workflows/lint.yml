@@ -1,6 +1,10 @@
-name: Fix Code Style
+name: Lint
 
-on: [push]
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
 
 jobs:
   lint:
@@ -24,5 +28,5 @@ jobs:
       - name: Install Pint
         run: composer global require laravel/pint
 
-      - name: Run Pint
-        run: pint
+      - name: Check PHP Code Style (Pint)
+        run: pint --test --verbose
