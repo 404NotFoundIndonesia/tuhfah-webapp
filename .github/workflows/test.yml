@@ -34,5 +34,8 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate --force
 
+      - name: Create SQLite Database
+        run: touch database/database.sqlite
+
       - name: Run Tests
         run: php artisan test
