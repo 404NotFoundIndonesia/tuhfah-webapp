@@ -51,7 +51,13 @@ class AttendanceController extends Controller
                 ->editColumn('date', fn ($row) => $row->date->format('Y-m-d'))
                 ->editColumn('status', fn ($row) => __('label.'.$row->status->value))
                 ->addColumn('recorder', fn ($row) => optional($row->recordedBy)->name ?? '-')
+                ->addColumn('action', fn ($row) => '
+                    <a href="'.route('attendance.show', $row->id).'" class="btn btn-sm btn-icon btn-outline-secondary" title="'.__('label.detail').'">
+                        <i class="bx bx-show"></i>
+                    </a>
+                ')
                 ->filterColumn('status', fn ($query, $keyword) => $query->where('status', $keyword))
+                ->rawColumns(['action'])
                 ->toJson();
         }
 

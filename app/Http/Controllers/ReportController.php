@@ -173,7 +173,7 @@ class ReportController extends Controller
                 AttendanceStatus::PERMITTED->value => 0,
             ];
             foreach ($records as $r) {
-                $counts[$r->status] = (int) $r->cnt;
+                $counts[$r->status->value] = (int) $r->cnt;
             }
             $total = array_sum($counts);
             $rows[] = [
