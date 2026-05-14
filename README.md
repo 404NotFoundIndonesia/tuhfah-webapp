@@ -19,6 +19,9 @@
 
 > **Tuhfah** (تُحْفَة) is an Arabic word meaning *gift* or *masterpiece* — reflecting the goal of delivering an exceptional tool to support Islamic education.
 
+
+<img title="Screenshot" src="docs/screenshot.png" />
+
 ---
 
 ## Features
@@ -56,8 +59,16 @@ In-app notification bell with unread badge. Notifications are dispatched for:
 
 Users can opt out of email delivery per their profile preferences.
 
+### Inventory Management
+Track institution assets with full condition monitoring (Good / Damaged / Lost). Administrators can log usage and disposal events, each of which decrements stock automatically. Full usage history is retained per item.
+
 ### Reporting & Analytics
-*(Planned — Phase 8)*
+Generate and export three report types:
+- **Attendance Report** — present / absent / sick / permitted counts per student for a weekly or monthly period, with attendance percentage
+- **Financial Report** — collected, outstanding, and overdue payment totals alongside honorarium disbursements and net income for a selected month
+- **Progress Report** — all learning progress entries for a specific student within a date range
+
+All reports are exportable as **XLSX** or **PDF**. Teachers can access progress reports scoped to their own students only.
 
 ---
 
@@ -74,7 +85,7 @@ Users can opt out of email delivery per their profile preferences.
 | PDF Export | barryvdh/laravel-dompdf |
 | DataTables | Yajra Laravel DataTables |
 | Hijri Calendar | pharaonic/laravel-hijri |
-| Testing | PHPUnit 11, 340+ tests |
+| Testing | PHPUnit 11, 400+ tests |
 
 ---
 
@@ -140,7 +151,7 @@ The test suite uses an in-memory SQLite database — no separate database setup 
 php artisan test
 ```
 
-Expected output: **340 tests, 597 assertions, 0 failures.**
+Expected output: **407 tests, 710 assertions, 0 failures.**
 
 ---
 
@@ -161,12 +172,12 @@ The `payments:mark-overdue` command runs daily and transitions eligible unpaid p
 ```
 app/
 ├── Console/Commands/       # MarkOverduePayments
-├── Enum/                   # Role, AttendanceStatus, PaymentStatus, AnnouncementScope, ...
-├── Exports/                # PaymentExport, HonorariumExport (XLSX + PDF)
+├── Enum/                   # Role, AttendanceStatus, PaymentStatus, AnnouncementScope, ItemCondition, ...
+├── Exports/                # PaymentExport, HonorariumExport, AttendanceReportExport, FinanceReportExport (XLSX + PDF)
 ├── Http/Controllers/       # Feature controllers per domain
 ├── Models/                 # Eloquent models
 ├── Notifications/          # StudentAbsent, PaymentOverdue, NewLearningProgress
-└── Services/               # AttendanceService, PaymentGatewayService
+└── Services/               # AttendanceService, DashboardService, PaymentGatewayService
 ```
 
 ---
