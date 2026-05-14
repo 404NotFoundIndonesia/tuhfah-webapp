@@ -35,4 +35,8 @@ return [
     'announcement' => 'Announcements',
     'notifications' => 'Notifications',
     'inventory' => 'Inventory',
+    'reports' => 'Reports',
+    'report_attendance' => 'Attendance Report',
+    'report_finance' => 'Financial Report',
+    'report_progress' => 'Progress Report',
 ];

@@ -35,4 +35,8 @@ return [
     'announcement' => 'Pengumuman',
     'notifications' => 'Notifikasi',
     'inventory' => 'Inventaris',
+    'reports' => 'Laporan',
+    'report_attendance' => 'Laporan Kehadiran',
+    'report_finance' => 'Laporan Keuangan',
+    'report_progress' => 'Laporan Perkembangan',
 ];

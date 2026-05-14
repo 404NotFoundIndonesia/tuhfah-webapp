@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enum\AnnouncementScope;
 use App\Models\Announcement;
+use App\Services\DashboardService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -22,14 +23,16 @@ class PageController extends Controller
         return view('welcome', compact('announcements'));
     }
 
-    public function dashboard(Request $request): View
+    public function dashboard(Request $request, DashboardService $dashboardService): View
     {
         $announcements = Announcement::published()
             ->latest('published_at')
             ->take(5)
             ->get();
 
-        return view('pages.dashboard', compact('announcements'));
+        $stats = $dashboardService->stats($request->user());
+
+        return view('pages.dashboard', compact('announcements', 'stats'));
     }
 
     public function locale(Request $request): RedirectResponse

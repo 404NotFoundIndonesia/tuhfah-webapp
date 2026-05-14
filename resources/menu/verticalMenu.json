@@ -86,6 +86,50 @@
             ]
         },
         {
+            "name": "menu.reports",
+            "icon": "menu-icon tf-icons bx bx-bar-chart-alt-2",
+            "slug": "report.*",
+            "role": [
+                "owner",
+                "headmaster",
+                "administrator",
+                "teacher"
+            ],
+            "submenu": [
+                {
+                    "url": "report.attendance",
+                    "name": "menu.report_attendance",
+                    "slug": "report.attendance",
+                    "role": [
+                        "owner",
+                        "headmaster",
+                        "administrator"
+                    ]
+                },
+                {
+                    "url": "report.finance",
+                    "name": "menu.report_finance",
+                    "slug": "report.finance",
+                    "role": [
+                        "owner",
+                        "headmaster",
+                        "administrator"
+                    ]
+                },
+                {
+                    "url": "report.progress",
+                    "name": "menu.report_progress",
+                    "slug": "report.progress",
+                    "role": [
+                        "owner",
+                        "headmaster",
+                        "administrator",
+                        "teacher"
+                    ]
+                }
+            ]
+        },
+        {
             "menuHeader": "menu.setting",
             "role": [
                 "owner",

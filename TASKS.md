@@ -887,14 +887,14 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T2.5, T4.2
 
-- [ ] `DashboardService::stats(User $user): array` returns role-appropriate data:
+- [x] `DashboardService::stats(User $user): array` returns role-appropriate data:
   - All roles: total active students
   - Admin/Headmaster/Owner: attendance rate today, total unpaid payments, total overdue payments
   - Teacher: total students they recorded progress for this month
   - Guardian: child's attendance rate this month, outstanding payment count
-- [ ] Dashboard view: stat cards using Bootstrap grid
-- [ ] Unit test: `DashboardService::stats()` returns correct shape for each role
-- [ ] Stats use efficient aggregate queries (no N+1)
+- [x] Dashboard view: stat cards using Bootstrap grid
+- [x] Unit test: `DashboardService::stats()` returns correct shape for each role
+- [x] Stats use efficient aggregate queries (no N+1)
 
 **DoD:**
 - Dashboard loads in < 1 second for typical dataset (< 500 students)
@@ -914,11 +914,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T2.5, T4.7
 
-- [ ] Route `GET /report/attendance?period=weekly|monthly&date=YYYY-MM-DD` → paginated attendance report
-- [ ] Report shows each student with Present/Absent/Sick/Permitted counts and attendance percentage
-- [ ] Export to PDF and Excel via `GET /report/attendance/export?format=xlsx|pdf&...`
-- [ ] Gate: `owner`, `headmaster`, `administrator` only
-- [ ] Feature test: report returns correct data; export returns correct Content-Type
+- [x] Route `GET /report/attendance?period=weekly|monthly&date=YYYY-MM-DD` → paginated attendance report
+- [x] Report shows each student with Present/Absent/Sick/Permitted counts and attendance percentage
+- [x] Export to PDF and Excel via `GET /report/attendance/export?format=xlsx|pdf&...`
+- [x] Gate: `owner`, `headmaster`, `administrator` only
+- [x] Feature test: report returns correct data; export returns correct Content-Type
 
 **DoD:**
 - Report includes all active students even if they have zero attendance records
@@ -938,11 +938,11 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T4.2, T4.3, T4.7
 
-- [ ] Route `GET /report/finance?period=YYYY-MM` → financial summary
-- [ ] Shows: total payments by status, total honorariums paid, net income for period
-- [ ] Export to PDF and Excel
-- [ ] Gate: `owner`, `headmaster`, `administrator`
-- [ ] Feature test: report totals match fixture data
+- [x] Route `GET /report/finance?period=YYYY-MM` → financial summary
+- [x] Shows: total payments by status, total honorariums paid, net income for period
+- [x] Export to PDF and Excel
+- [x] Gate: `owner`, `headmaster`, `administrator`
+- [x] Feature test: report totals match fixture data
 
 **DoD:**
 - Financial totals are computed via SQL aggregates, not PHP loops
@@ -961,10 +961,10 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 
 **Depends on:** T3.3, T4.7
 
-- [ ] Route `GET /report/progress?student_id=&from=YYYY-MM-DD&to=YYYY-MM-DD` → progress report for student
-- [ ] Export to PDF via `GET /report/progress/export?format=pdf&...`
-- [ ] Gate: `owner`, `headmaster`, `administrator` (teacher can access for own students only)
-- [ ] Feature test: report scoped correctly by date range; teacher scoping tested
+- [x] Route `GET /report/progress?student_id=&from=YYYY-MM-DD&to=YYYY-MM-DD` → progress report for student
+- [x] Export to PDF via `GET /report/progress/export?format=pdf&...`
+- [x] Gate: `owner`, `headmaster`, `administrator` (teacher can access for own students only)
+- [x] Feature test: report scoped correctly by date range; teacher scoping tested
 
 **DoD:**
 - PDF export renders all progress entries ordered by date
@@ -1049,6 +1049,6 @@ Based on [PRD.md](PRD.md). Tasks ordered by dependency — complete each phase b
 | Phase 5 — Announcements | T5.1, T5.2, T5.3, T5.4 | Done |
 | Phase 6 — Notifications | T6.1, T6.2, T6.3, T6.4, T6.5 | Done |
 | Phase 7 — Inventory | T7.1, T7.2, T7.3 | Done |
-| Phase 8 — Reporting & Analytics | T8.1, T8.2, T8.3, T8.4 | Pending |
+| Phase 8 — Reporting & Analytics | T8.1, T8.2, T8.3, T8.4 | Done |
 | Cross-Cutting | TX.1, TX.2, TX.3, TX.4 | Ongoing |
 | **Total** | **34 tasks** | **0 / 34 done** |

@@ -12,6 +12,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentGatewayController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentGuardianController;
 use App\Http\Controllers\TeacherController;
@@ -99,6 +100,16 @@ Route::middleware(['locale'])->group(function () {
             Route::put('/{announcement}', [AnnouncementController::class, 'update'])->name('update');
             Route::patch('/{announcement}/publish', [AnnouncementController::class, 'publish'])->name('publish');
             Route::delete('/{announcement}', [AnnouncementController::class, 'destroy'])->name('destroy');
+        });
+
+        // Reports
+        Route::prefix('report')->name('report.')->group(function () {
+            Route::get('/attendance', [ReportController::class, 'attendance'])->name('attendance');
+            Route::get('/attendance/export', [ReportController::class, 'attendanceExport'])->name('attendance.export');
+            Route::get('/finance', [ReportController::class, 'finance'])->name('finance');
+            Route::get('/finance/export', [ReportController::class, 'financeExport'])->name('finance.export');
+            Route::get('/progress', [ReportController::class, 'progress'])->name('progress');
+            Route::get('/progress/export', [ReportController::class, 'progressExport'])->name('progress.export');
         });
 
         // Inventory — explicit routes so /create resolves before {inventory}
